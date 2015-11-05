@@ -1,15 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="lytekApp">
   <head>
     <meta charset="utf-8">
     <title>Lytek - Exalted Character Creator</title>
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
     
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/models.js"></script>
   </head>
 
   <body>
-    <p>it begins</p>
+    <div ng-view></div>
   </body>
 </html>

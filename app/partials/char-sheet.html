@@ -1,0 +1,150 @@
+<!-- Header section -->
+<div class="large-12 columns">
+    <div class="row">
+
+        <div class="large-4 columns">
+            <div class="panel">
+                <h5>Cool Graphic</h5>
+                <p>Put a nifty Exalted graphic here.</p>
+            </div>
+        </div>
+        <div class="large-4 columns">
+            <div class="panel">
+                <p>Name:
+                    <input type="text" ng-model="character.name">
+                </p>
+                <p>Player:
+                    <input type="text" ng-model="character.playerName">
+                </p>
+                <p>Caste:
+                    <input type="text" ng-model="character.caste">
+                </p>
+                <button href="#" data-dropdown="casteDrop" aria-controls="casteDrop" aria-expanded="false" class="button dropdown">Caste...</button>
+                <ul id="casteDrop" data-dropdown-content class="f-dropdown" aria-hidden="true">
+                    <li ng-repeat="caste in casteList">
+                        {{ caste }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="large-4 columns">
+            <div class="panel">
+                <h5>Concept, Anima, Supernal Ability</h5>
+                <p>Text fields here.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Attributes section -->
+    <div class="row">
+
+        <div class="large-12 columns">
+            <div class="panel">
+                <h5>Attributes</h5>
+                <p>Attributes panel content goes here.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Abilities, Merits, etc. -->
+    <div class="row">
+
+        <div class="large-4 columns">
+            <div class="panel">
+                <h5>Abilities</h5>
+                <p>Abilities panel contents here.</p>
+            </div>
+        </div>
+
+        <div class="large-8 columns">
+            <div class="row">
+
+                <div class="large-12 columns">
+                    <div class="panel">
+                        <h5>Merits</h5>
+                        <p>Merits panel contents here.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <h5>Willpower</h5>
+                        <p>Willpower panel contents here.</p>
+                    </div>
+                </div>
+
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <h5>Limit Break</h5>
+                        <p>Limit Break panel contents here.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <h5>Essence</h5>
+                        <p>Essence panel contents here.</p>
+                    </div>
+                </div>
+
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <h5>Limit Trigger</h5>
+                        <p>Limit Trigger panel contents here.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <h5>Experience</h5>
+                        <p>Experience panel contents here.</p>
+                    </div>
+                </div>
+
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <h5>Solar Experience</h5>
+                        <p>Solar Experience panel contents here.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="large-12 columns">
+                    <div class="panel">
+                        <h5>Weapons</h5>
+                        <p>Weapons panel contents here.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="panel">
+                <h5>Health & Defense</h5>
+                <p>Health & Defense panel contents here</p>
+            </div>
+        </div>
+    </div>
+</div>
