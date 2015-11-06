@@ -1,0 +1,46 @@
+[
+  {
+    "ability": "Archery",
+    "name": "Wise Arrow",
+    "cost": "1m",
+    "ability_min": "2",
+    "essence_min": "1",
+    "type": "Supplemental",
+    "keywords": ["Uniform"],
+    "duration": "Instant",
+    "prereqs": null
+  },
+  {
+    "ability": "Archery",
+    "name": "Sight Without Eyes",
+    "cost": "1m",
+    "ability_min": "3",
+    "essence_min": "1",
+    "type": "Reflexive",
+    "keywords": [],
+    "duration": "One tick",
+    "prereqs": "Wise Arrow"
+  },
+  {
+    "ability": "Archery",
+    "name": "Blood Without Balance",
+    "cost": "3m",
+    "ability_min": "4",
+    "essence_min": "1",
+    "type": "Reflexive",
+    "keywords": ["Decisive-only"],
+    "duration": "Instant",
+    "prereqs": "Sight Without Eyes"
+  },
+  {
+    "ability": "",
+    "name": "",
+    "cost": "",
+    "ability_min": "",
+    "essence_min": "",
+    "type": "",
+    "keywords": [],
+    "duration": "",
+    "prereqs": null
+  }
+]

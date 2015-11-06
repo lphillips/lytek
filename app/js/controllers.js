@@ -6,8 +6,6 @@ var lytekControllers = angular.module('lytekControllers', []);
 
 lytekControllers.controller('CharacterSheetCtrl', ['$scope',
   function($scope) {
-    $scope.charms = [];
-    
     $scope.character = new SolarCharacter();
     $scope.character.name = "Damascus";
     $scope.character.playerName = "Luke";
@@ -20,3 +18,20 @@ lytekControllers.controller('CharacterSheetCtrl', ['$scope',
                         SolarCasteEnum.ECLIPSE];
   }
 ]);
+
+lytekControllers.controller('CharmBrowserCtrl', ['$scope', '$routeParams', 'Charms',
+  function($scope, $routeParams, Charms) {
+    $scope.charms = Charms.query({ability: $routeParams.ability});
+  }
+]);
+
+//phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
+//  function($scope, $routeParams, Phone) {
+//    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+//      $scope.mainImageUrl = phone.images[0];
+//    });
+//
+//    $scope.setImage = function(imageUrl) {
+//      $scope.mainImageUrl = imageUrl;
+//    };
+//  }]);
