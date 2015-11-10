@@ -1,0 +1,14 @@
+.charmgraph 
+{
+  width: 1000px;
+  height: 1000px;
+  border: 1px solid lightgray;
+}
+
+.testclass 
+{
+  width: 600px;
+  height: 400px;
+  background-color: red;
+  border: 1px solid lightgray;
+}

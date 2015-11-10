@@ -2,25 +2,30 @@
 
 /* App Module */
 
-var lytekApp = angular.module('lytekApp', [
-  'ngRoute',
+var lytekApp = angular.module("lytekApp", [
+  "ngRoute",
   
-  'lytekControllers',
-  'lytekServices'
+  "lytekControllers",
+  "lytekServices",
+  "lytekDirectives"
 ]);
 
-lytekApp.config(['$routeProvider',
-  function($routeProvider) {
+lytekApp.config(["$routeProvider", "$logProvider",
+  function($routeProvider, $logProvider) {
+    $logProvider.debugInfoEnabled = true;
+    
     $routeProvider.
-      when('/lytek', {
-        templateUrl: 'partials/char-sheet.html',
-        controller: 'CharacterSheetCtrl'
+      when("/lytek", {
+        templateUrl: "partials/char-sheet.html",
+        controller: "CharacterSheetCtrl"
       }).
-      when('/lytek/charms/:ability', {
-        templateUrl: 'partials/charm-browser.html',
-        controller: 'CharmBrowserCtrl'
+      when("/lytek/charms/:ability", {
+        templateUrl: "partials/charm-browser.html",
+        controller: "CharmBrowserCtrl"
       }).
       otherwise({
-        redirectTo:'/lytek'
+        redirectTo: function(routeParams, path, search) {
+          return "/lytek";
+        }
     });
 }]);
