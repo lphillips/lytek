@@ -21,6 +21,42 @@
   </head>
 
   <body>
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">          
+          <li class="name">
+            <h1>
+              <a href="#/lytek">
+                Lytek
+              </a>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+     
+        <section class="top-bar-section">
+          <ul class="left">
+            <li class="divider"></li>
+            <li class="has-dropdown">
+              <a class="active" href="#">Characters</a>
+              <ul class="dropdown">
+                <li><label>Actions</label></li>
+                <li><a href="#" class="">New Character</a></li>
+                <li><a href="#">Load</a></li>
+                <li><a href="#">Save</a></li>
+                <li><a href="#">Export to PDF</a></li>
+              </ul>
+            </li>
+            <li class="divider"></li>
+            <li><a href="#">Character Sheet</a></li>
+            <li class="divider"></li>
+            <li><a href="#/lytek/charms/archery">Charm Browser</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Spell Browser</a></li>
+            <li class="divider"></li>
+          </ul>
+        </section>
+      </nav>
+    
     <div ng-view></div>
   </body>
 </html>
