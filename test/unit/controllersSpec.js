@@ -2,8 +2,6 @@
 
 /* jasmine specs for controllers go here */
 describe('Lytek controllers', function() {
-//  console.log('unit test: ' + this.constructor)
-  
   var customMatchers = {
     toEqualData: function(util, customEqualityTesters) {
       return {
@@ -35,39 +33,62 @@ describe('Lytek controllers', function() {
   });
   
   describe('CharmBrowserCtrl', function() {
-    var scope, ctrl, $httpBackend, Charms,
+    var scope, ctrl, $httpBackend, Charms, deferredQuery,
         testCharms = function() {
-          return [{"ability": "Archery",
-                    "name": "Wise Arrow",
+          return [{
+                    "ability": "Archery",
+                    "id": "Charm1Id",
+                    "name": "Charm 1",
                     "cost": "1m",
                     "ability_min": "2",
                     "essence_min": "1",
                     "type": "Supplemental",
                     "keywords": ["Uniform"],
                     "duration": "Instant",
-                    "prereqs": null
-          }]
+                    "prereqs": []
+                  },
+                  {
+                    "ability": "Archery",
+                    "id": "Charm2Id",
+                    "name": "Charm 2",
+                    "cost": "1m",
+                    "ability_min": "2",
+                    "essence_min": "1",
+                    "type": "Supplemental",
+                    "keywords": ["Uniform"],
+                    "duration": "Instant",
+                    "prereqs": ["Charm1Id"]
+                  }]
         };
     
-    beforeEach(inject(function(_$httpBackend_, $injector, $rootScope, $routeParams, $controller) {
-      $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('charms/testCharms.json').
-          respond(200, testCharms());
-      
+    beforeEach(inject(function($injector, $rootScope, $routeParams, $controller, $q) {
       Charms = $injector.get("Charms");
       spyOn(Charms, "query").and.callFake(function() {
-        return testCharms();
+        var deferred = $q.defer();
+        deferred.resolve(testCharms());
+        return {$promise: deferred.promise};
       });
       
       $routeParams.ability = "testCharms";
       scope = $rootScope.$new();
-      ctrl = $controller('CharmBrowserCtrl', {$scope: scope});
+      ctrl = $controller("CharmBrowserCtrl", {$scope: scope});
     }));
     
-    it('should fetch charm data', function() {      
+    it("should fetch data and build a charm graph", function() {
       expect(Charms.query).toHaveBeenCalledWith({"ability":"testCharms"});
+      expect(scope.charms).toEqual([]);
+      scope.$apply();
+      
       expect(scope.charms).toEqual(testCharms());
-    });
+      expect(scope.nodes.length).toBe(2);
+      expect(scope.edges.length).toBe(1);
+      
+      expect(scope.nodes.get("Charm1Id").label).toEqual("Charm 1");
+      expect(scope.nodes.get("Charm2Id").label).toEqual("Charm 2");
+      expect(scope.edges.get("Charm1IdCharm2Id").from).toEqual("Charm1Id");
+      expect(scope.edges.get("Charm1IdCharm2Id").to).toEqual("Charm2Id");
+      expect(scope.charmData).toBeDefined();
+    })
   });
   
 });
