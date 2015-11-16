@@ -6,16 +6,35 @@ var lytekControllers = angular.module("lytekControllers", []);
 
 lytekControllers.controller("CharacterSheetCtrl", ["$scope",
   function($scope) {
+    // Flag indicating if the character is in the process of character creation.
+    var newCharacter = true;
+    $scope.totalBonusPoints = 15;
+    $scope.spentBonusPoints = 0;
+    
     $scope.character = new SolarCharacter();
     $scope.character.name = "Damascus";
     $scope.character.playerName = "Luke";
     $scope.character.caste = SolarCasteEnum.ZENITH;
-    
+    $scope.character.strength = 3;
+   
     $scope.casteList = [SolarCasteEnum.DAWN, 
                         SolarCasteEnum.ZENITH, 
                         SolarCasteEnum.TWILIGHT, 
                         SolarCasteEnum.NIGHT, 
                         SolarCasteEnum.ECLIPSE];
+    
+    $scope.conceptPlaceholder = "My character concept is...";
+    $scope.animaPlaceholder = "My character's anima looks like...";
+    
+    $scope.finishCharacterCreation = function () {
+      this.newCharacter = false;
+      $scope.totalBonusPoints = 0;
+      $scope.spentBonusPoints = 0;
+    };
+    
+    $scope.isNewCharacter = function() {
+      return newCharacter;
+    };
   }
 ]);
 

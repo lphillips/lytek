@@ -5,10 +5,41 @@
   border: 1px solid lightgray;
 }
 
-.testclass 
+.boxed 
 {
-  width: 600px;
-  height: 400px;
-  background-color: red;
-  border: 1px solid lightgray;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  display: block;
+  font-size: 0.875rem;
+  height: 2.3125rem;
+  line-height: 2.3125rem;
+  overflow: visible;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.textbox-center
+{
+  display: block;
+  font-size: 0.875rem;
+  height: 2.3125rem;
+  line-height: 2.3125rem;
+  overflow: visible;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.dot
+{
+  margin-left: 2px;
+  margin-right: 2px;
 }
