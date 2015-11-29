@@ -37,8 +37,9 @@ lytekDirectives.directive("dots", function() {
     link: function(scope, element, attrs) {
       for (var i = 0; i < 5; i++) {
         var imgElem = document.createElement("img");
+        imgElem.setAttribute("data-dotindex", i);
         if (i < scope.ngModel) {
-          imgElem.setAttribute("src", "img/dot.png");
+          imgElem.setAttribute("src", "img/dot.png"); 
         }
         else {
           imgElem.setAttribute("src", "img/dot_empty.png");
@@ -46,19 +47,18 @@ lytekDirectives.directive("dots", function() {
 
         imgElem.setAttribute("width", "12");
         imgElem.setAttribute("height", "12");
+        
         imgElem.onclick = (function(properties) {
           var childNodes = this.parentNode.childNodes;
-          var newVal = 0;
-          var elemFound = false;
+          
+          var selectedIndex = this.getAttribute("data-dotindex");
+          scope.ngModel = Number(selectedIndex) + 1;
+          scope.$apply();
+          var newVal = scope.ngModel;
+          
           for (var index = 0; index < childNodes.length; index++) {
             var dotElem = childNodes[index];
-
-            if (!elemFound) {
-              newVal = index + 1;
-            }
-            if(childNodes[index] == this) {
-              elemFound = true;
-            }
+            
             if (index < newVal) {
               dotElem.setAttribute("src", "img/dot.png");
             }
@@ -66,10 +66,8 @@ lytekDirectives.directive("dots", function() {
               dotElem.setAttribute("src", "img/dot_empty.png");
             }
           }
-          scope.ngModel = newVal;
-          scope.$apply();
-          console.log("new Atrribute: " + scope.ngModel);
         });
+        
         element[0].appendChild(imgElem);
       };
     }

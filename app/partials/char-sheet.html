@@ -77,39 +77,89 @@
 
     <!-- Attributes section -->
     <div class="row">
-
-        <div class="large-12 columns">
-            <div class="panel">
-                <h5>Attributes</h5>
-                <p>Attributes panel content goes here.</p>
-                <dots ng-model="character.strength"></dots>
-<!--
-              <svg>
-  <defs>
-    <radialGradient id="myGradient"
-      cx="50%" cy="50%" r="50%" fx="50%" fy="80%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="1" />
-      <stop offset="100%" stop-color="#000" stop-opacity="1" />
-    </radialGradient>
-  </defs>
-  <circle cx="50" cy="50" r="50" fill="url(#myGradient)" />
-</svg>
--->
-              
+      <div class="large-12 columns">
+        <div class="panel">
+          <div class="row">
+            <h5>Attributes</h5>
+            <div class="medium-2 columns">
+              <span class="boxed">Strength</span>
             </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.strength"></dots>
+            </div>
+            <div class="medium-2 columns">
+              <span class="boxed">Charisma</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.charisma"></dots>
+            </div>
+            <div class="medium-2 columns">
+              <span class="boxed">Perception</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.perception"></dots>
+            </div>
+          </div>
+          <div class="row">
+            <div class="medium-2 columns">
+              <span class="boxed">Dexterity</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.dexterity"></dots>
+            </div>
+            <div class="medium-2 columns">
+              <span class="boxed">Manipulation</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.manipulation"></dots>
+            </div>
+            <div class="medium-2 columns">
+              <span class="boxed">Intelligence</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.intelligence"></dots>
+            </div>
+          </div>
+          <div class="row">
+            <div class="medium-2 columns">
+              <span class="boxed">Stamina</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.stamina"></dots>
+            </div>
+            <div class="medium-2 columns">
+              <span class="boxed">Appearance</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.appearance"></dots>
+            </div>
+            <div class="medium-2 columns">
+              <span class="boxed">Wits</span>
+            </div>
+            <div class="medium-2 columns">
+              <dots ng-model="character.wits"></dots>
+            </div>
+          </div>
         </div>
-
+      </div>
     </div>
 
     <!-- Abilities, Merits, etc. -->
     <div class="row">
 
-        <div class="large-4 columns">
-            <div class="panel">
-                <h5>Abilities</h5>
-                <p>Abilities panel contents here.</p>
+      <div class="large-4 columns">
+        <div class="panel">
+          <h5>Abilities</h5>
+          <div class="row" ng-repeat="abilityRank in character.abilityRanks">
+            <div class="medium-6 columns">
+              <span class="boxed">{{character.AbilityEnum[abilityRank.abilityId]}}</span>
             </div>
+            <div class="medium-6 columns">
+              <dots ng-model="abilityRank.rank"></dots>
+            </div>
+          </div>
         </div>
+      </div>
 
         <div class="large-8 columns">
             <div class="row">
