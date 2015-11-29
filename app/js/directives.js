@@ -51,8 +51,13 @@ lytekDirectives.directive("dots", function() {
         imgElem.onclick = (function(properties) {
           var childNodes = this.parentNode.childNodes;
           
-          var selectedIndex = this.getAttribute("data-dotindex");
-          scope.ngModel = Number(selectedIndex) + 1;
+          var selectedIndex = Number(this.getAttribute("data-dotindex"));
+          if ((selectedIndex + 1) === scope.ngModel) {
+            scope.ngModel = selectedIndex;
+          }
+          else {
+            scope.ngModel = selectedIndex + 1;
+          }
           scope.$apply();
           var newVal = scope.ngModel;
           
