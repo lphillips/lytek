@@ -50,7 +50,7 @@ function ExaltedCharacter() {
   this.abilityRanks = [];
   this.martialArtsRanks = [];
   this.craftsRanks = [];
-  for (ability in this.AbilityEnum) {
+  for (var ability in this.AbilityEnum) {
     var newAbilityRank = null;
     
     if (ability === "CRAFT") {
@@ -82,6 +82,7 @@ var SolarCasteEnum = {
 };
 
 function SolarCharacter() {
+  ExaltedCharacter.call(this);
   this.caste = SolarCasteEnum.DAWN;
   this.supernalAbility = "What";
   this.anima = "Yeah";
