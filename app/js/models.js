@@ -7,15 +7,25 @@ function ExaltedCharacter() {
   this.playerName = "";
   this.concept = "Big old sucka";
 
-  this.strength = 1;
-  this.dexterity = 1;
-  this.stamina = 1;
-  this.charisma = 1;
-  this.manipulation = 1;
-  this.appearance = 1;
-  this.perception = 1;
-  this.intelligence = 1;
-  this.wits = 1;
+  this.AttributeEnum = {
+    STRENGTH: "Strength",
+    DEXTERITY: "Dexterity",
+    STAMINA: "Stamina",
+    CHARISMA: "Charisma",
+    MANIPULATION: "Manipulation",
+    APPEARANCE: "Appearance",
+    INTELLIGENCE: "Intellligence",
+    WITS: "Wits",
+    PERCEPTION: "Perception"
+  };
+  
+  // Attribute Ranks
+  this.attributeRanks = {};
+  for(var attribute in this.AttributeEnum) {
+    var newAbilityRank = new AbilityRank(attribute, 1);
+    newAbilityRank.minRank = 1;
+    this.attributeRanks[attribute] = newAbilityRank;
+  }
   
   this.AbilityEnum = {
     ARCHERY: "Archery",
@@ -100,6 +110,8 @@ SolarCharacter.prototype = Object.create(ExaltedCharacter.prototype);
 function AbilityRank(abilityId, rank) {
   this.abilityId = abilityId;
   this._rank = rank;
+  this.minRank = 0;
+  this.maxRank = 5;
 }
 
 Object.defineProperty(AbilityRank.prototype, "rank", {
@@ -108,7 +120,10 @@ Object.defineProperty(AbilityRank.prototype, "rank", {
     return this._rank;
   },
   set: function(newRank) {
-    this._rank = newRank;
+    var val = newRank;
+    val = Math.max(this.minRank, val);
+    val = Math.min(this.maxRank, val);
+    this._rank = val;
   }
 });
 

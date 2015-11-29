@@ -15,7 +15,6 @@ lytekControllers.controller("CharacterSheetCtrl", ["$scope",
     $scope.character.name = "Damascus";
     $scope.character.playerName = "Luke";
     $scope.character.caste = SolarCasteEnum.ZENITH;
-    $scope.character.strength = 3;
    
     $scope.casteList = [SolarCasteEnum.DAWN, 
                         SolarCasteEnum.ZENITH, 
