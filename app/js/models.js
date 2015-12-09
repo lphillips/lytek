@@ -58,8 +58,8 @@ function ExaltedCharacter() {
   
   // Ability ranks
   this.abilityRanks = [];
-  this.martialArtsRanks = [];
-  this.craftsRanks = [];
+  this.martialArtsRanks = {};
+  this.craftsRanks = {};
   for (var ability in this.AbilityEnum) {
     var newAbilityRank = null;
     
@@ -117,36 +117,44 @@ function AbilityRank(abilityId, rank) {
 Object.defineProperty(AbilityRank.prototype, "rank", {
   enumerable:true,
   get: function() {
-    return this._rank;
+    return this.__get_rank();
   },
   set: function(newRank) {
-    var val = newRank;
-    val = Math.max(this.minRank, val);
-    val = Math.min(this.maxRank, val);
-    this._rank = val;
+    this.__set_rank(newRank);
   }
 });
+
+AbilityRank.prototype.__get_rank = function() {
+  return this._rank;
+};
+
+AbilityRank.prototype.__set_rank = function(newRank) {
+  var val = newRank;
+  val = Math.max(this.minRank, val);
+  val = Math.min(this.maxRank, val);
+  this._rank = val;
+};
 
 //=============================================================================
 // CLASS: AbilityGroupRank extends AbilityRank
 //=============================================================================
 
-function AbilityGroupRank(abilityId, abilitySubList) {
+function AbilityGroupRank(abilityId, abilityGroup) {
   AbilityRank.call(this, abilityId, 0);
-  this.abilitySubList = abilitySubList;
+  this.abilityGroup = abilityGroup;
 }
-
-Object.defineProperty(AbilityGroupRank.prototype, "rank", {
-  get: function() {
-    // Searching for the highest rank sub-ability.
-    var highestRank = 0;
-    for (var rankObj in this.abilitySubList) {
-      highestRank = (rankObj.rank > highestRank) ? rankObj.rank : highestRank;
-    }
-    return highestRank;
-  },
-  set: function(newRank) {}
-});
 
 AbilityGroupRank.prototype = Object.create(AbilityRank.prototype);
 AbilityGroupRank.prototype.constructor = AbilityGroupRank;
+
+AbilityGroupRank.prototype.__get_rank = function() {
+  // Searching for the highest rank sub-ability.
+  var highestRank = 0;
+  for (var id in this.abilityGroup) {
+    highestRank = (this.abilityGroup[id].rank > highestRank) ? this.abilityGroup[id].rank : highestRank;
+  }
+  return highestRank;
+}
+
+AbilityGroupRank.prototype.__set_rank = function(newRank) {}
+
