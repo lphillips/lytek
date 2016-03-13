@@ -6,6 +6,7 @@ function ExaltedCharacter() {
   this.name = "";
   this.playerName = "";
   this.concept = "Big old sucka";
+  this.essence = 1;
 
   this.AttributeEnum = {
     STRENGTH: "Strength",
@@ -77,6 +78,21 @@ function ExaltedCharacter() {
   
   this.spentXP = 0;
   this.totalXP = 0;
+}
+
+ExaltedCharacter.prototype.getAbilityRank = function(ability) {
+  var result = null;
+  for (var i = 0; i < this.abilityRanks.length; i++) {
+    if (this.abilityRanks[i].abilityId == ability) {
+      result = this.abilityRanks[i];
+      break;
+    }
+  }
+  return result;
+}
+
+ExaltedCharacter.prototype.getAttributeRank = function(attribute) {
+  return this.attributeRanks[attribute];
 }
 
 //=============================================================================
@@ -158,3 +174,120 @@ AbilityGroupRank.prototype.__get_rank = function() {
 
 AbilityGroupRank.prototype.__set_rank = function(newRank) {}
 
+//=============================================================================
+// CLASS: Prereq
+//=============================================================================
+
+function Prereq(prereqKey, prereqValue) {
+  this.key = prereqKey;
+  this.value = prereqValue;
+}
+
+Prereq.prototype.isSatisfied = function(character) {
+  return false;
+}
+
+//=============================================================================
+// CLASS: AttributePrereq extends Prereq
+//=============================================================================
+
+function AttributePrereq(prereqKey, prereqValue) {
+  Prereq.call(this, prereqKey, prereqValue);
+}
+
+AttributePrereq.prototype = Object.create(Prereq.prototype);
+AttributePrereq.prototype.constructor = AttributePrereq;
+
+AttributePrereq.prototype.isSatisfied =  function(character) {
+  var attributeRank = character.getAttributeRank(this.key);
+  return attributeRank.rank >= this.value;
+}
+
+//=============================================================================
+// CLASS: AbilityPrereq extends Prereq
+//=============================================================================
+
+function AbilityPrereq(prereqKey, prereqValue) {
+  Prereq.call(this, prereqKey, prereqValue);
+}
+
+AbilityPrereq.prototype = Object.create(Prereq.prototype);
+AbilityPrereq.prototype.constructor = AbilityPrereq;
+
+AbilityPrereq.prototype.isSatisfied = function(character) {
+  var abilityRank = character.getAbilityRank(this.key);
+  return abilityRank.rank >= this.value;
+}
+
+//=============================================================================
+// CLASS: EssencePrereq extends Prereq
+//=============================================================================
+
+function EssencePrereq(prereqValue) {
+  Prereq.call(this, null, prereqValue);
+}
+
+EssencePrereq.prototype = Object.create(Prereq.prototype);
+EssencePrereq.prototype.constructor = EssencePrereq;
+
+EssencePrereq.prototype.isSatisfied = function(character) {
+  return character.essence >= this.value;
+}
+
+//=============================================================================
+// CLASS: CharmPrereq extends Prereq
+//=============================================================================
+
+function CharmPrereq(prereqKey, prereqValue) {
+  Prereq.call(this, prereqKey, prereqValue);
+}
+
+CharmPrereq.prototype = Object.create(Prereq.prototype);
+CharmPrereq.prototype.constructor = CharmPrereq;
+
+//CharmPrereq.prototype.isSatisfied(character) {
+//  // TODO: Check if charm exists in character.
+//  return false;
+//}
+
+//=============================================================================
+// CLASS: CharmCountPrereq extends Prereq
+//=============================================================================
+
+function CharmCountPrereq(prereqKey, prereqValue) {
+  Prereq.call(this, prereqKey, prereqValue);
+}
+
+CharmCountPrereq.prototype = Object.create(Prereq.prototype);
+CharmCountPrereq.prototype.constructor = CharmCountPrereq;
+
+//CharmCountPrereq.prototype.isSatisfied(character) {
+//  // TODO: Check if character has enough charms of the specified type.
+//  return false;
+//}
+
+//=============================================================================
+// CLASS: AndPrereq extends Prereq
+//=============================================================================
+
+function AndPrereq(firstPrereq, secondPrereq) {
+  Prereq.call(this, null, null);
+  this.firstPrereq = firstPrereq;
+  this.secondPrereq = secondPrereq;
+}
+
+AndPrereq.prototype = Object.create(Prereq.prototype);
+AndPrereq.prototype.constructor = AndPrereq;
+
+//=============================================================================
+// CLASS: OrPrereq extends Prereq
+//=============================================================================
+
+function OrPrereq(firstPrereq, secondPrereq) {
+  Prereq.call(this, null, null);
+  this.firstPrereq = firstPrereq;
+  this.secondPrereq = secondPrereq;
+}
+
+OrPrereq.prototype = Object.create(Prereq.prototype);
+OrPrereq.prototype.constructor = OrPrereq;
