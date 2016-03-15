@@ -1,0 +1,185 @@
+[
+  {
+    "id": "merit_allies",
+    "name": "Allies", 
+    "type": "Story", 
+    "availableDots": [1, 3, 5],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_ambidextrous",
+    "name": "Ambidextrous",
+    "type": "Innate",
+    "availableDots": [1, 2],
+    "purchaseCount": 1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_artifact",
+    "name": "Artifact",
+    "type": "Story",
+    "availableDots": [2, 3, 4, 5],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_backing",
+    "name": "Backing",
+    "type": "Story",
+    "availableDots": [2, 3, 4],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_boundless_endurance",
+    "name": "Boundless Endurance",
+    "type": "Purchased",
+    "availableDots": [2],
+    "purchaseCount": 1,
+    "prerequisites": "ATTRIBUTE:STAMINA:3 | ABILITY:RESISTANCE:3",
+    "description": ""
+  },
+  {
+    "id": "merit_command",
+    "name": "Command",
+    "type": "Story",
+    "availableDots": [2, 3, 4, 5],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_contacts",
+    "name": "Contacts",
+    "type": "Story",
+    "availableDots": [1, 3, 5],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_cult",
+    "name": "Cult",
+    "type": "Story",
+    "availableDots": [1, 2, 3, 4, 5],
+    "purchaseCount": 1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_danger_sense",
+    "name": "Danger Sense",
+    "type": "Innate",
+    "availableDots": [3],
+    "purchaseCount": 1,
+    "prerequisites": "ATTRIBUTE:PERCEPTION:3 | ABILITY:AWARENESS:3",
+    "description": ""
+  },
+  {
+    "id": "merit_demesne",
+    "name": "Demesne",
+    "type": "Story",
+    "availableDots": [2, 4],
+    "purchaseCount": 1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_direction_sense",
+    "name": "Direction Sense",
+    "type": "Innate",
+    "availableDots": [1],
+    "purchaseCount": 1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_eidetic_memory",
+    "name": "Eidetic Memory",
+    "type": "Innate",
+    "availableDots": [2],
+    "purchaseCount": 1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_familiar",
+    "name": "Familiar",
+    "type": "Story",
+    "availableDots":[1, 2, 3],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_fast_reflexes",
+    "name": "Fast Reflexes",
+    "type": "Purchased",
+    "availableDots": [3],
+    "purchaseCount": 1,
+    "prerequisites": "ATTRIBUTE:WITS:3",
+    "description": ""
+  },
+  {
+    "id": "merit_fleet_of_foot",
+    "name": "Fleet of Foot",
+    "type": "Purchased",
+    "availableDots": [4],
+    "purchaseCount": 1,
+    "prerequisites": "ATTRIUBUTE:DEXTERITY:3",
+    "description": ""
+  },
+  {
+    "id": "merit_followers",
+    "name": "Followers",
+    "type": "Story",
+    "availableDots": [1, 2, 3],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_giant",
+    "name": "Giant",
+    "type": "Innate",
+    "availableDots": [4],
+    "purchaseCount": 1,
+    "prerequisites": "ATTRIBUTE:STAMINA:3",
+    "description": ""
+  },
+  {
+    "id": "merit_hearthstone",
+    "name": "Hearthstone",
+    "type": "Story",
+    "availableDots": [2, 4],
+    "purchaseCount": 1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_hideous",
+    "name": "Hideous",
+    "type": "Innate",
+    "availableDots": [0],
+    "purchaseCount": 1,
+    "prerequisites": "",
+    "description": ""
+  },
+  {
+    "id": "merit_influence",
+    "name": "Influence",
+    "type": "Story",
+    "availableDots": [1, 2, 3, 4, 5],
+    "purchaseCount": -1,
+    "prerequisites": "",
+    "description": ""
+  }
+  
+  
+  
+]

@@ -4,8 +4,39 @@
 
 var lytekControllers = angular.module("lytekControllers", []);
 
-lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts",
-  function($scope, MartialArts) {
+lytekControllers.controller("CharacterSheetCtrl", 
+                            ["$scope", "MartialArts", "Merits",
+  function($scope, MartialArts, Merits) {
+    
+    //=========================================================================
+    // fetchResource(resource, resultsArray)
+    //=========================================================================
+    $scope.fetchResource = function(resource, resultsArray) {
+      resource.$promise.then(function (result) {
+        for (var i = 0; i < result.length; i++) {
+          resultsArray[result[i].id] = result[i];
+        }
+      });
+    }
+    
+    //=========================================================================
+    // fetchMartialArts()
+    //=========================================================================
+    $scope.fetchMartialArts = function() {
+      $scope.fetchResource(MartialArts.query(), $scope.martialArts);
+    };
+    
+    //=========================================================================
+    // fetchMerits()
+    //=========================================================================
+    $scope.fetchMerits = function() {
+      $scope.fetchResource(Merits.query(), $scope.merits);
+    };
+    
+    //=========================================================================
+    // Initialization
+    //=========================================================================
+    
     // Flag indicating if the character is in the process of character creation.
     var newCharacter = true;
     $scope.totalBonusPoints = 15;
@@ -30,12 +61,12 @@ lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts",
     // Fetch the martial arts list.
     $scope.selectedMartialArt = null;
     $scope.martialArts = {};
-    var martialArtsResource = MartialArts.query();
-    martialArtsResource.$promise.then(function (result) {
-      for (var i = 0; i < result.length; i++) {
-        $scope.martialArts[result[i].id] = result[i];
-      }
-    });
+    $scope.fetchMartialArts();
+    
+    // Fetch the merits list.
+    $scope.selectedMerit = null;
+    $scope.merits = {};
+    $scope.fetchMerits();
     
     // Managing craft abilities.
     $scope.selectedCraft = null;

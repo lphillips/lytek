@@ -16,3 +16,9 @@ lytekServices.factory('MartialArts', ['$resource',
     return $resource('martial-arts/martial-arts.json', {}, {});
   }
 ]);
+
+lytekServices.factory('Merits', ['$resource',
+  function($resource) {
+    return $resource('merits/merits.json', {}, {});
+  }
+]);
