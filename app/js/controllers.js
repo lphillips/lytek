@@ -55,6 +55,7 @@ lytekControllers.controller("CharacterSheetCtrl",
     
     $scope.conceptPlaceholder = "My character concept is...";
     $scope.animaPlaceholder = "My character's anima looks like...";
+    $scope.addMeritPlaceholder = "New merit...";  
     $scope.addMartialArtPlaceholder = "New martial art...";
     $scope.addCraftPlaceholder = "New craft...";
     
@@ -86,6 +87,61 @@ lytekControllers.controller("CharacterSheetCtrl",
     $scope.isNewCharacter = function() {
       return newCharacter;
     };
+      
+    //=========================================================================
+    // addMerit(newMerit)
+    //=========================================================================
+    $scope.addMerit = function(newMerit) {
+        var merit = $scope.merits[newMerit];
+        $scope.character.meritRanks[newMerit] = new AbilityRank(newMerit, merit.availableDots[0]);
+    }
+    
+    //=========================================================================
+    // removeMerit(existingMerit)
+    //=========================================================================
+    $scope.removeMerit = function(existingMerit) {
+        delete $scope.character.meritRanks[existingMerit];
+    }
+    
+    //=========================================================================
+    // labelForMerit(merit)
+    //=========================================================================
+    $scope.labelForMerit = function(merit) {
+        var labelText = merit.name + " (";
+        for (var i = 0; i < merit.availableDots.length; i++) {
+            labelText += $scope.dotString(merit.availableDots[i]);
+            if (merit.availableDots.length == 2) {
+                if (i === 0) {
+                    labelText += " or ";
+                }
+            }
+            else if (i < merit.availableDots.length - 2) {
+                labelText += ", ";
+            }
+            else if (i == merit.availableDots.length - 2) {
+                labelText += ", or ";
+            }
+        }
+        labelText += ")";
+        return labelText;
+    }
+    
+    //=========================================================================
+    // dotString(count)
+    //=========================================================================
+    $scope.dotString = function(count) {
+        var result = '';
+        
+        if (count === 0) {
+            return '0 dots';
+        }
+        else {
+            for (var i = 0; i < count; i++) {
+                result += '●';
+            }
+            return result;
+        }
+    }
     
     //=========================================================================
     // addMartialArt(newMartialArt)

@@ -30,6 +30,28 @@ describe('Lytek controllers', function() {
     it('should create a Character', function() {
       expect(scope.character.name).toBe('Damascus');
     });
+      
+    it('should format a label for a Merit', function() {
+       var mockMeritOneChoice = {'name': 'MockMeritOneChoice',
+                        'availableDots': [3]};
+        var meritLabel = scope.labelForMerit(mockMeritOneChoice);
+        expect(meritLabel).toEqual('MockMeritOneChoice (●●●)');
+        
+        var mockMeritTwoChoices = {'name': 'MockMeritTwoChoices',
+                                   'availableDots': [1, 5]};
+        meritLabel = scope.labelForMerit(mockMeritTwoChoices);
+        expect(meritLabel).toEqual('MockMeritTwoChoices (● or ●●●●●)');
+        
+        var mockMeritThreeChoices = {'name': 'MockMeritThreeChoices',
+                                   'availableDots': [1, 2, 5]};
+        meritLabel = scope.labelForMerit(mockMeritThreeChoices);
+        expect(meritLabel).toEqual('MockMeritThreeChoices (●, ●●, or ●●●●●)');
+        
+        var mockMeritZeroChoice = {'name': 'MockMeritZeroChoice',
+                                   'availableDots': [0]};
+        meritLabel = scope.labelForMerit(mockMeritZeroChoice);
+        expect(meritLabel).toEqual('MockMeritZeroChoice (0 dots)');
+    });
   });
   
   describe('CharmBrowserCtrl', function() {
