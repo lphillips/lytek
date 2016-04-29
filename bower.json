@@ -13,10 +13,10 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "foundation-sites": "~6.2.1",
-    "vis": "~4.9.0"
+    "vis": "~4.16.1"
   },
   "resolutions": {
     "angular": "1.4.7",
-    "vis": "~4.9.0"
+    "vis": "~4.16.1"
   }
 }
