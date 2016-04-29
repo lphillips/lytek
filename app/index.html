@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en" ng-app="lytekApp">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Lytek - Exalted Character Creator</title>
-    <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
+    <link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.min.css">
     <link rel="stylesheet" href="bower_components/vis/dist/vis.css">
     <link rel="stylesheet" href="css/lytek.css">
-    
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/foundation/js/foundation.js"></script>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation-sites/dist/foundation.min.js"></script>
     <script src="bower_components/vis/dist/vis.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -18,47 +19,43 @@
     <script src="js/directives.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/models.js"></script>
-  </head>
+</head>
 
-  <body>
-    <nav class="top-bar" data-topbar>
-        <ul class="title-area">          
-          <li class="name">
-            <h1>
-              <a href="#/lytek">
-                Lytek
-              </a>
-            </h1>
-          </li>
-          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-     
-        <section class="top-bar-section">
-          <ul class="left">
-            <li class="divider"></li>
-            <li class="has-dropdown">
-              <a class="active" href="#">Characters</a>
-              <ul class="dropdown">
-                <li><label>Actions</label></li>
-                <li><a href="#" class="">New Character</a></li>
-                <li><a href="#">Load</a></li>
-                <li><a href="#">Save</a></li>
-                <li><a href="#">Export to PDF</a></li>
-              </ul>
-            </li>
-            <li class="divider"></li>
-            <li><a href="#">Character Sheet</a></li>
-            <li class="divider"></li>
-            <li><a href="#/lytek/charms/awareness">Charm Browser</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Spell Browser</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Martial Arts Browser</a></li>
-            <li class="divider"></li>
-          </ul>
-        </section>
-      </nav>
-    
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li class="menu-text">Lytek</li>
+                <li>
+                    <a href="#/lytek">Characters</a>
+                    <ul class="menu vertical">
+                        <li><a href="#">New Character</a>
+                        </li>
+                        <li><a href="#">Load</a>
+                        </li>
+                        <li><a href="#">Save</a>
+                        </li>
+                        <li><a href="#">Export to PDF</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#/lytek/charms/awareness">Charm Browser</a>
+                </li>
+                <li><a href="#">Sorcery Browser</a>
+                </li>
+                <li><a href="#">Martial Arts Browser</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <div ng-view></div>
-  </body>
+
+    <!-- Initialize Foundation -->
+    <script>
+        $(document).foundation();
+    </script>
+
+</body>
+
 </html>

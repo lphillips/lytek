@@ -12,7 +12,7 @@
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
-    "foundation": "~5.5.3",
+    "foundation-sites": "~6.2.1",
     "vis": "~4.9.0"
   },
   "resolutions": {
