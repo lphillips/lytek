@@ -183,6 +183,7 @@ lytekControllers.controller("CharmBrowserCtrl",
                             ["$scope", "$routeParams", "Charms",
   function($scope, $routeParams, Charms) {
     $scope.charms = [];
+    $scope.character = new ExaltedCharacter();
     var charmsResource = Charms.query({ability: $routeParams.ability});
     
     // When the list of charm is received, build the graph info.

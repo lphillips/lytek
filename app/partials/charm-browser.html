@@ -1,11 +1,11 @@
-<visnetwork class="charmgraph" options="network_options" ng-model="charmData"></visnetwork>
+<div class="large-12 columns">
+    <div class="large-1 columns">
+        <ul class="menu vertical">
+            <li ng-repeat="abilityName in character.AbilityEnum">{{abilityName}}</li>
+        </ul>
+    </div>
+    <div class="large-11 columns">
+        <visnetwork class="charmgraph" options="network_options" ng-model="charmData"></visnetwork>
+    </div>
+</div>
 
-<!--<div class="panel" ng-repeat="charm in charms">
-  <p>Name: {{charm.name}}</p>
-  <p>Cost: {{charm.cost}}</p>
-  <p>Mins: {{charm.ability}} {{charm.ability_min}}, Essence {{charm.essence_min}}</p>
-  <p>Type: {{charm.type}}</p>
-  <p>Keywords: {{charm.keywords}}</p>
-  <p>Duration: {{charm.duration}}</p>
-  <p>Prerequisites: {{charm.prereqs}}</p>
-</div>-->
