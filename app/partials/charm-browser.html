@@ -1,7 +1,9 @@
 <div class="large-12 columns">
     <div class="large-1 columns">
         <ul class="menu vertical">
-            <li ng-repeat="abilityName in character.AbilityEnum">{{abilityName}}</li>
+            <li ng-repeat="abilityName in character.AbilityEnum">
+                <a href=#/lytek/charms/{{abilityName}}>{{abilityName}}</a>
+            </li>
         </ul>
     </div>
     <div class="large-11 columns">
