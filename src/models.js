@@ -1,5 +1,3 @@
-"use strict";
-
 //=============================================================================
 // CLASS: ExaltedCharacter
 //=============================================================================
@@ -73,7 +71,7 @@ function ExaltedCharacter() {
         }
         this.abilityRanks.push(newAbilityRank);
     }
-
+    
     // Other ranks
     this.meritRanks = {};
     this.martialArtsRanks = {};
@@ -83,7 +81,7 @@ function ExaltedCharacter() {
     this.totalXP = 0;
 }
 
-ExaltedCharacter.prototype.getAbilityRank = function (ability) {
+ExaltedCharacter.prototype.getAbilityRank = function(ability) {
     var result = null;
     for (var i = 0; i < this.abilityRanks.length; i++) {
         if (this.abilityRanks[i].abilityId == ability) {
@@ -92,11 +90,11 @@ ExaltedCharacter.prototype.getAbilityRank = function (ability) {
         }
     }
     return result;
-};
+}
 
-ExaltedCharacter.prototype.getAttributeRank = function (attribute) {
+ExaltedCharacter.prototype.getAttributeRank = function(attribute) {
     return this.attributeRanks[attribute];
-};
+}
 
 //=============================================================================
 // CLASS: SolarCharacter extends ExaltedCharacter
@@ -135,19 +133,19 @@ function AbilityRank(abilityId, rank) {
 
 Object.defineProperty(AbilityRank.prototype, "rank", {
     enumerable: true,
-    get: function get() {
+    get: function() {
         return this.__get_rank();
     },
-    set: function set(newRank) {
+    set: function(newRank) {
         this.__set_rank(newRank);
     }
 });
 
-AbilityRank.prototype.__get_rank = function () {
+AbilityRank.prototype.__get_rank = function() {
     return this._rank;
 };
 
-AbilityRank.prototype.__set_rank = function (newRank) {
+AbilityRank.prototype.__set_rank = function(newRank) {
     var val = newRank;
     val = Math.max(this.minRank, val);
     val = Math.min(this.maxRank, val);
@@ -166,16 +164,16 @@ function AbilityGroupRank(abilityId, abilityGroup) {
 AbilityGroupRank.prototype = Object.create(AbilityRank.prototype);
 AbilityGroupRank.prototype.constructor = AbilityGroupRank;
 
-AbilityGroupRank.prototype.__get_rank = function () {
+AbilityGroupRank.prototype.__get_rank = function() {
     // Searching for the highest rank sub-ability.
     var highestRank = 0;
     for (var id in this.abilityGroup) {
-        highestRank = this.abilityGroup[id].rank > highestRank ? this.abilityGroup[id].rank : highestRank;
+        highestRank = (this.abilityGroup[id].rank > highestRank) ? this.abilityGroup[id].rank : highestRank;
     }
     return highestRank;
-};
+}
 
-AbilityGroupRank.prototype.__set_rank = function (newRank) {};
+AbilityGroupRank.prototype.__set_rank = function(newRank) {}
 
 //=============================================================================
 // CLASS: Prereq
@@ -186,9 +184,9 @@ function Prereq(prereqKey, prereqValue) {
     this.value = prereqValue;
 }
 
-Prereq.prototype.isSatisfied = function (character) {
+Prereq.prototype.isSatisfied = function(character) {
     return false;
-};
+}
 
 //=============================================================================
 // CLASS: AttributePrereq extends Prereq
@@ -201,10 +199,10 @@ function AttributePrereq(prereqKey, prereqValue) {
 AttributePrereq.prototype = Object.create(Prereq.prototype);
 AttributePrereq.prototype.constructor = AttributePrereq;
 
-AttributePrereq.prototype.isSatisfied = function (character) {
+AttributePrereq.prototype.isSatisfied = function(character) {
     var attributeRank = character.getAttributeRank(this.key);
     return attributeRank.rank >= this.value;
-};
+}
 
 //=============================================================================
 // CLASS: AbilityPrereq extends Prereq
@@ -217,10 +215,10 @@ function AbilityPrereq(prereqKey, prereqValue) {
 AbilityPrereq.prototype = Object.create(Prereq.prototype);
 AbilityPrereq.prototype.constructor = AbilityPrereq;
 
-AbilityPrereq.prototype.isSatisfied = function (character) {
+AbilityPrereq.prototype.isSatisfied = function(character) {
     var abilityRank = character.getAbilityRank(this.key);
     return abilityRank.rank >= this.value;
-};
+}
 
 //=============================================================================
 // CLASS: EssencePrereq extends Prereq
@@ -233,9 +231,9 @@ function EssencePrereq(prereqValue) {
 EssencePrereq.prototype = Object.create(Prereq.prototype);
 EssencePrereq.prototype.constructor = EssencePrereq;
 
-EssencePrereq.prototype.isSatisfied = function (character) {
+EssencePrereq.prototype.isSatisfied = function(character) {
     return character.essence >= this.value;
-};
+}
 
 //=============================================================================
 // CLASS: CharmPrereq extends Prereq
