@@ -34,7 +34,7 @@ gulp.task('lint', function() {
 //});
 
 // Compile and Webpack JS
-gulp.task('compile', function() {
+gulp.task('compile', ['lint'], function() {
     return gulp.src('src/controllers.js')
         .pipe(webpack( require('./webpack.config.js')))
         .pipe(gulp.dest('dist/'));
