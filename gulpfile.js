@@ -12,7 +12,7 @@ var webpack = require('gulp-webpack');
 // Lint Task
 gulp.task('lint', function() {
     return gulp.src('src/*.js')
-        .pipe(jshint())
+        .pipe(jshint({ esversion: 6, strict: false, asi: true }))
         .pipe(jshint.reporter('default'));
 });
 
