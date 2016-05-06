@@ -9,6 +9,18 @@ export class ExaltedCharacter {
         this.concept = "Big old sucka";
         this.essence = 1;
 
+        this.AttributeEnum = {
+            STRENGTH: "Strength",
+            DEXTERITY: "Dexterity",
+            STAMINA: "Stamina",
+            CHARISMA: "Charisma",
+            MANIPULATION: "Manipulation",
+            APPEARANCE: "Appearance",
+            INTELLIGENCE: "Intellligence",
+            WITS: "Wits",
+            PERCEPTION: "Perception"
+        };
+
         // Attribute Ranks
         this.attributeRanks = {};
         for (var attribute in this.AttributeEnum) {
@@ -16,6 +28,35 @@ export class ExaltedCharacter {
             newAttributeRank.minRank = 1;
             this.attributeRanks[attribute] = newAttributeRank;
         }
+
+        this.AbilityEnum = {
+            ARCHERY: "Archery",
+            ATHLETICS: "Athletics",
+            AWARENESS: "Awareness",
+            BRAWL: "Brawl",
+            BUREAUCRACY: "Bureaucracy",
+            CRAFT: "Craft",
+            DODGE: "Dodge",
+            INTEGRITY: "Integrity",
+            INVESTIGATION: "Investigation",
+            LARCENY: "Larceny",
+            LINGUISTICS: "Linguistics",
+            LORE: "Lore",
+            MARTIAL_ARTS: "Martial Arts",
+            MEDICINE: "Medicine",
+            MELEE: "Melee",
+            OCCULT: "Occult",
+            PERFORMANCE: "Performance",
+            PRESENCE: "Presence",
+            RESISTANCE: "Resistance",
+            RIDE: "Ride",
+            SAIL: "Sail",
+            SOCIALIZE: "Socialize",
+            STEALTH: "Stealth",
+            SURVIVAL: "Survival",
+            THROWN: "Thrown",
+            WAR: "War"
+        };
 
         // Ability ranks
         this.abilityRanks = [];
@@ -56,63 +97,14 @@ export class ExaltedCharacter {
     }
 }
 
-ExaltedCharacter.AttributeEnum = {
-    STRENGTH: "Strength",
-    DEXTERITY: "Dexterity",
-    STAMINA: "Stamina",
-    CHARISMA: "Charisma",
-    MANIPULATION: "Manipulation",
-    APPEARANCE: "Appearance",
-    INTELLIGENCE: "Intellligence",
-    WITS: "Wits",
-    PERCEPTION: "Perception"
-};
-
-ExaltedCharacter.AbilityEnum = {
-    ARCHERY: "Archery",
-    ATHLETICS: "Athletics",
-    AWARENESS: "Awareness",
-    BRAWL: "Brawl",
-    BUREAUCRACY: "Bureaucracy",
-    CRAFT: "Craft",
-    DODGE: "Dodge",
-    INTEGRITY: "Integrity",
-    INVESTIGATION: "Investigation",
-    LARCENY: "Larceny",
-    LINGUISTICS: "Linguistics",
-    LORE: "Lore",
-    MARTIAL_ARTS: "Martial Arts",
-    MEDICINE: "Medicine",
-    MELEE: "Melee",
-    OCCULT: "Occult",
-    PERFORMANCE: "Performance",
-    PRESENCE: "Presence",
-    RESISTANCE: "Resistance",
-    RIDE: "Ride",
-    SAIL: "Sail",
-    SOCIALIZE: "Socialize",
-    STEALTH: "Stealth",
-    SURVIVAL: "Survival",
-    THROWN: "Thrown",
-    WAR: "War"
-};
-
 //=============================================================================
 // CLASS: SolarCharacter extends ExaltedCharacter
 //=============================================================================
 
-var SolarCasteEnum = {
-    DAWN: "Dawn",
-    ZENITH: "Zenith",
-    TWILIGHT: "Twilight",
-    NIGHT: "Night",
-    ECLIPSE: "Eclipse"
-};
-
 export class SolarCharacter extends ExaltedCharacter {
     constructor() {
         super();
-        this.caste = SolarCasteEnum.DAWN;
+        this.caste = SolarCharacter.SolarCaste.DAWN;
         this.supernalAbility = "What";
         this.anima = "Yeah";
 
@@ -120,6 +112,13 @@ export class SolarCharacter extends ExaltedCharacter {
         this.totalSolarXP = 0;
     }
 }
+SolarCharacter.SolarCaste = {
+    DAWN: "Dawn",
+    ZENITH: "Zenith",
+    TWILIGHT: "Twilight",
+    NIGHT: "Night",
+    ECLIPSE: "Eclipse"
+};
 
 //=============================================================================
 // CLASS: AbilityRank
@@ -205,7 +204,7 @@ export class AbilityPrereq extends Prereq {
     constructor(prereqKey, prereqValue) {
         super(prereqKey, prereqValue);
     }
-
+    
     isSatisfied(character) {
         var abilityRank = character.getAbilityRank(this.key);
         return abilityRank.rank >= this.value;
@@ -220,7 +219,7 @@ export class EssencePrereq extends Prereq {
     constructor(prereqValue) {
         super(null, prereqValue);
     }
-
+    
     isSatisfied(character) {
         return character.essence >= this.value;
     }

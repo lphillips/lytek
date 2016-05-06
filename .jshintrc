@@ -1,13 +1,8 @@
 {
-  "globalstrict": true,
+  "esnext": true,
+  "node": true,
   "globals": {
-    "angular": false,
-    "describe": false,
-    "it": false,
-    "expect": false,
-    "beforeEach": false,
-    "afterEach": false,
-    "module": false,
-    "inject": false
+    "angular": true,
+    "console": true
   }
 }
