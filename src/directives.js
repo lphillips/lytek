@@ -1,3 +1,4 @@
+import 'angular-resource';
 import vis from 'vis';
 
 var lytekDirectives = angular.module("lytekDirectives", []);

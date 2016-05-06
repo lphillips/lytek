@@ -1,7 +1,7 @@
 'use strict';
 
 /* App Module */
-
+import ngRoute from 'angular-route';
 import lytekControllers from './controllers';
 import lytekServices from './services';
 import lytekDirectives from './directives';
