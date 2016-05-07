@@ -45,12 +45,14 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "vis": "^4.16.1",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1",
+    "start": "node node_modules/.bin/webpack-dev-server --content-base app --hot",
+    "start-win": "node_modules\\.bin\\webpack-dev-server.cmd -—content-base app --hot",
     "build": "gulp",
     "pretest": "npm install",
     "test": "karma start test/karma.conf.js",
