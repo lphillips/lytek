@@ -175,7 +175,7 @@
                     <div class="row">
                         <h5>Merits</h5>
                         <div class="large-10 columns">
-                            <select ng-model="selectedMerit" ng-options="merit.id as merit.name for merit in merits | orderBy:'name'" placeholder="{{addMeritPlaceholder}}"></select>
+                            <select ng-model="selectedMerit" ng-options="merit.id as merit.name for merit in meritsList | orderBy:'name'" placeholder="{{addMeritPlaceholder}}"></select>
                         </div>
                         <div class="large-2 columns">
                             <button class="button" ng-click="addMerit(selectedMerit)">+</button>
@@ -264,7 +264,7 @@
                     <div class="row">
                         <h5>Martial Arts</h5>
                         <div class="large-10 columns">
-                            <select ng-model="selectedMartialArt" ng-options="ma.id as ma.name for ma in martialArts | orderBy:'name'" placeholder="{{addMartialArtPlaceholder}}"></select>
+                            <select ng-model="selectedMartialArt" ng-options="ma.id as ma.name for ma in martialArtsList | orderBy:'name'" placeholder="{{addMartialArtPlaceholder}}"></select>
                         </div>
                         <div class="large-2 columns">
                             <button class="button" ng-click="addMartialArt(selectedMartialArt)">+</button>
