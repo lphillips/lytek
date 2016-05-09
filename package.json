@@ -44,7 +44,7 @@
     "shelljs": "^0.2.6",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "vis": "^4.16.1",
+    "vis": "git+https://github.com/lphillips/vis.git",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },

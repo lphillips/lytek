@@ -4,6 +4,7 @@ import {
     SolarCharacter, ExaltedCharacter, AbilityRank
 }
 from './models';
+import CharmShape from './charmshape';
 import vis from 'vis';
 
 /* Controllers */
@@ -222,9 +223,9 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Char
 
         $scope.network_options = {
             nodes: {
-                //            customShape: function customShape(options, body, labelModule, image) {
-                //                return new CharmShape(options, body, labelModule);
-                //            },
+                customShape: function customShape(options, body, labelModule, image) {
+                    return new CharmShape(options, body, labelModule);
+                },
                 font: {
                     face: 'Sorts Mill Goudy',
                     align: 'center'
@@ -259,19 +260,3 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Char
         }
     }
 ]);
-
-//function CharmShape(options, body, labelModule) {
-//    _vis2.default.call(this, options, body, labelModule);
-//    console.log('We are making Charm shapes');
-//}
-//
-//CharmShape.prototype.resize = function (ctx, selected) {
-//    _vis2.default.call(this, ctx, selected);
-//    console.log('We are resizing Charm shapes');
-//    if (this.width < 400) {
-//        this.width = 400;
-//    }
-//    if (this.height < 300) {
-//        this.height = 400;
-//    }
-//};
