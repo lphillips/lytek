@@ -197,10 +197,13 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Char
             $scope.charms = result;
 
             // Build the list of nodes and edges.
+            var nodeLevels = {};
             angular.forEach($scope.charms, function(charm, key) {
+                nodeLevels[charm.id] = maxPrereqLevel(nodeLevels, charm) + 1;
                 $scope.nodes.add({
                     id: charm.id,
-                    label: stringDivider(charm.name, 16, '', '\n')
+                    label: stringDivider(charm.name, 16, '', '\n'),
+                    level: nodeLevels[charm.id]
                 });
 
                 angular.forEach(charm.prereqs, function(charmId, key) {
@@ -257,6 +260,14 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Char
                 }
             }
             return str;
+        }
+        
+        function maxPrereqLevel(nodeLevels, charm) {
+            var maxLevel = 0;
+            for (var idx = 0; idx < charm.prereqs.length; idx++) {
+                maxLevel = Math.max(maxLevel, nodeLevels[charm.prereqs[idx]]);
+            }
+            return maxLevel;
         }
     }
 ]);
