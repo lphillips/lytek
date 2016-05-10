@@ -232,16 +232,19 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Char
                 font: {
                     face: 'Sorts Mill Goudy',
                     align: 'center'
-                },
-                shape: 'box'
+                }
+            },
+            edges: {
+              arrows: {
+                  to: true
+              }
             },
             layout: {
                 hierarchical: {
                     enabled: true,
-                    direction: "UD",
-                    levelSeparation: 150,
-                    nodeSpacing: 300,
-                    treeSpacing: 50
+                    direction:'UD',
+                    sortMethod: 'directed',
+                    nodeSpacing: 200
                 }
             },
             physics: {
