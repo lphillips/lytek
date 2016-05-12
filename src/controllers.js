@@ -225,6 +225,9 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Char
         };
 
         $scope.network_options = {
+            autoResize: true,
+            height: '100%',
+            width: '100%',
             nodes: {
                 customShape: function customShape(options, body, labelModule, image) {
                     return new CharmShape(options, body, labelModule);
