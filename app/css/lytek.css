@@ -1,45 +1,50 @@
-.charmgraph 
-{
-  width: 1000px;
-  height: 1000px;
-  border: 1px solid lightgray;
+.fullWidth {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: initial;
 }
-
-.boxed 
-{
-  border-style: solid;
-  border-width: 1px;
-  border-color: lightgray;
-  display: block;
-  font-size: 0.875rem;
-  height: 2.3125rem;
-  line-height: 2.3125rem;
-  overflow: visible;
-  padding-bottom: 0;
-  padding-top: 0;
-  position: relative;
-  text-align: center;
-  width: 100%;
-  z-index: 2;
+.fullHeight {
+    height: 100vh;
+    margin-top: auto;
+    margin-bottom: auto;
+    max-height: initial;
 }
-
-.textbox-center
-{
-  display: block;
-  font-size: 0.875rem;
-  height: 2.3125rem;
-  line-height: 2.3125rem;
-  overflow: visible;
-  padding-bottom: 0;
-  padding-top: 0;
-  position: relative;
-  text-align: center;
-  width: 100%;
-  z-index: 2;
+.charmgraph {
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgray;
 }
-
-.dot
-{
-  margin-left: 2px;
-  margin-right: 2px;
+.boxed {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    display: block;
+    font-size: 0.875rem;
+    height: 2.3125rem;
+    line-height: 2.3125rem;
+    overflow: visible;
+    padding-bottom: 0;
+    padding-top: 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+}
+.textbox-center {
+    display: block;
+    font-size: 0.875rem;
+    height: 2.3125rem;
+    line-height: 2.3125rem;
+    overflow: visible;
+    padding-bottom: 0;
+    padding-top: 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+}
+.dot {
+    margin-left: 2px;
+    margin-right: 2px;
 }
