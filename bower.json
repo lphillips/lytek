@@ -6,7 +6,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "html5-boilerplate": "~5.2.0",
-    "foundation-sites": "~6.2.1"
+    "html5-boilerplate": "~5.2.0"
   }
 }

@@ -1,13 +1,13 @@
-<div class="large-12 columns">
-    <div class="large-1 columns">
-        <ul class="menu vertical">
-            <li ng-repeat="abilityName in character.AbilityEnum">
-                <a href=#/lytek/charms/{{abilityName}}>{{abilityName}}</a>
-            </li>
-        </ul>
-    </div>
-    <div class="large-11 columns">
-        <visnetwork class="charmgraph" options="network_options" ng-model="charmData"></visnetwork>
-    </div>
-</div>
+<md-sidenav md-component-id="left" class="md-sidenav-left">
+    <md-list>
+        <md-list-item ng-repeat="abilityName in character.AbilityEnum">
+            <md-button href=#/lytek/charms/{{abilityName}}>{{abilityName}}</md-button>
+        </md-list-item>
+    </md-list>
+</md-sidenav>
+<md-button ng-click="openLeftMenu()">
+    Abilities
+</md-button>
+<visnetwork layout-fill class="charmgraph" options="network_options" ng-model="charmData"></visnetwork>
+
 

@@ -6,6 +6,7 @@ import {
 from './models';
 import CharmShape from './charmshape';
 import vis from 'vis';
+import 'vis/dist/vis.css';
 
 /* Controllers */
 
@@ -184,8 +185,8 @@ lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts", "Mer
     }
 ]);
 
-lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Charms",
-    function($scope, $routeParams, Charms) {
+lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$routeParams", "Charms",
+    function($scope, $mdSidenav, $routeParams, Charms) {
         $scope.charms = [];
         $scope.character = new ExaltedCharacter();
         var charmsResource = Charms.query({
@@ -253,6 +254,10 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$routeParams", "Char
             physics: {
                 enabled: false
             }
+        };
+        
+        $scope.openLeftMenu = function() {
+            $mdSidenav('left').toggle();
         };
 
         function stringDivider(str, width, prefix, postfix) {

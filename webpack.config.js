@@ -3,6 +3,7 @@
 // import Webpack plugins
 var cleanPlugin = require('clean-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack');
 
 // define Webpack configuration object to be exported
@@ -21,15 +22,12 @@ var config = {
     module: {
         loaders: [{
             test: /\.css$/,
-            loader: 'style!css'
-        }, {
-            test: /\.scss$/,
-            loader: 'style!css!sass'
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader")
         }, {
             test: /\.(woff|woff2)$/,
             loader: 'url?limit=10000&mimetype=application/font-woff'
         }, {
-            test: /\.(eot|svg|ttf)$/,
+            test: /\.(eot|svg|ttf|png)$/,
             loader: 'file'
         }, {
             test: /\.js?$/,
@@ -47,11 +45,12 @@ var config = {
         new ngAnnotatePlugin({
             add: true
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+        new ExtractTextPlugin('styles.css'),
+        //        new webpack.optimize.UglifyJsPlugin({
+        //            compress: {
+        //                warnings: false
+        //            }
+        //        }),
         new webpack.HotModuleReplacementPlugin()
     ]
 };

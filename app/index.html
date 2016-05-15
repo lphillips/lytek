@@ -4,51 +4,61 @@
 <head>
     <meta charset="utf-8">
     <title>Lytek - Exalted Character Creator</title>
-    <link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.min.css">
-    <link rel="stylesheet" href="bower_components/vis/dist/vis.css">
+    <link rel="stylesheet" href="styles.css">
+    <!--    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/vis/dist/vis.css">-->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy">
-    <link rel="stylesheet" href="css/lytek.css">
+    <!--    <link rel="stylesheet" href="css/lytek.css">-->
 
+    <!--
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/foundation-sites/dist/foundation.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+-->
 </head>
 
 <body>
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-                <li class="menu-text">Lytek</li>
-                <li>
-                    <a href="#/lytek">Characters</a>
-                    <ul class="menu vertical">
-                        <li><a href="#">New Character</a>
-                        </li>
-                        <li><a href="#">Load</a>
-                        </li>
-                        <li><a href="#">Save</a>
-                        </li>
-                        <li><a href="#">Export to PDF</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#/lytek/charms/awareness">Charm Browser</a>
-                </li>
-                <li><a href="#">Sorcery Browser</a>
-                </li>
-                <li><a href="#">Martial Arts Browser</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div ng-view></div>
+    <md-menu-bar>
+        <md-menu>
+            <button ng-click="$mdOpenMenu()">
+                Character
+            </button>
+            <md-menu-content>
+                <md-menu-item>
+                    <md-button href="#">
+                        New
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        Open
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        Save
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        Export to PDF
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <md-button href="#/lytek/charms/awareness">
+            Charm Browser
+        </md-button>
+        <button>
+            Sorcery Browser
+        </button>
+        <button>
+            Martial Arts Browser
+        </button>
+    </md-menu-bar>
+
+    <div ng-view layout-fill></div>
 
     <script src="bundle.js"></script>
-    <!-- Initialize Foundation -->
-    <script>
-        $(document).foundation();
-    </script>
-
 </body>
 
 </html>

@@ -1,330 +1,178 @@
 <!-- Header section -->
-<div class="large-12 columns">
-    <div class="row">
+<div layout="row">
 
-        <div class="large-4 columns">
-            <div class="panel">
-                <h5 ng-hide="isNewCharacter()">Experience</h5>
-                <h5 ng-show="isNewCharacter()">Bonus Points</h5>
-                <div class="row collapse">
-                    <div class="large-3 large-offset-6 columns">
-                        <span class="boxed">Spent</span>
-                    </div>
-                    <div class="large-3 columns">
-                        <span class="postfix">Total</span>
-                    </div>
-                </div>
-                <div class="row collapse" ng-hide="isNewCharacter()">
-                    <div class="large-6 columns">
-                        <span class="label boxed">XP</span>
-                    </div>
-                    <div class="large-3 columns"><span class="textbox-center">{{character.spentXP}}</span>
-                    </div>
-                    <div class="large-3 columns">
-                        <input type="number" id="totalXPInput" placeholder="{{character.totalXP}}">
-                    </div>
-                </div>
-                <div class="row collapse" ng-hide="isNewCharacter()">
-                    <div class="large-6 columns">
-                        <span class="label boxed">Solar XP</span>
-                    </div>
-                    <div class="large-3 columns"><span class="textbox-center">{{character.spentSolarXP}}</span>
-                    </div>
-                    <div class="large-3 columns">
-                        <input type="number" id="totalXPInput" placeholder="{{character.totalSolarXP}}">
-                    </div>
-                </div>
-                <div class="row collapse" ng-show="isNewCharacter()">
-                    <div class="large-6 columns">
-                        <span class="label boxed">Bonus Points</span>
-                    </div>
-                    <div class="large-3 columns"><span class="textbox-center">{{spentBonusPoints}}</span>
-                    </div>
-                    <div class="large-3 columns">
-                        <input type="number" id="totalXPInput" placeholder="{{totalBonusPoints}}">
-                    </div>
-                </div>
-            </div>
+    <div layout="column" flex="33">
+        <h5 ng-hide="isNewCharacter()">Experience</h5>
+        <h5 ng-show="isNewCharacter()">Bonus Points</h5>
+        <div layout="row">
+            <span flex="25" flex-offset="50" class="boxed">Spent</span>
+            <span flex="25" class="boxed">Total</span>
         </div>
-        <div class="large-4 columns">
-            <div class="panel">
-                <h5>Character</h5>
-                <div class="row collapse prefix-radius">
-                    <div class="large-4 columns">
-                        <span class="prefix">Name</span>
-                    </div>
-                    <div class="large-8 columns">
-                        <input type="text" ng-model="character.name">
-                    </div>
-                </div>
-                <div class="row collapse prefix-radius">
-                    <div class="large-4 columns">
-                        <span class="prefix">Player</span>
-                    </div>
-                    <div class="large-8 columns">
-                        <input type="text" ng-model="character.playerName">
-                    </div>
-                </div>
-                <label>Caste
-                    <select ng-model="character.caste" ng-options="casteName for casteName in casteList"></select>
-                </label>
-            </div>
+        <div layout="row" ng-hide="isNewCharacter()">
+            <span flex="50" class="label boxed">XP</span>
+            <span flex="25" class="textbox-center">{{character.spentXP}}</span>
+            <input flex="25" type="number" id="totalXPInput" placeholder="{{character.totalXP}}">
         </div>
-        <div class="large-4 columns">
-            <div class="panel">
-                <h5>Concept & Anima</h5>
-                <label>Concept
-                    <input type="text" ng-model="character.concept" placeholder="{{conceptPlaceholder}}">
-                </label>
-                <label>Anima
-                    <input type="text" ng-model="character.anima" placeholder="{{animaPlaceholder}}">
-                </label>
-            </div>
+        <div layout="row" ng-hide="isNewCharacter()">
+            <span flex="50" class="label boxed">Solar XP</span>
+            <span flex="25" class="textbox-center">{{character.spentSolarXP}}</span>
+            <input flex="25" type="number" id="totalXPInput" placeholder="{{character.totalSolarXP}}">
         </div>
-
-    </div>
-
-    <!-- Attributes section -->
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="panel">
-                <div class="row">
-                    <h5>Attributes</h5>
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.STRENGTH}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['STRENGTH'].rank"></dots>
-                    </div>
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.CHARISMA}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['CHARISMA'].rank"></dots>
-                    </div>
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.PERCEPTION}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['PERCEPTION'].rank"></dots>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.DEXTERITY}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['DEXTERITY'].rank"></dots>
-                    </div>
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.MANIPULATION}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['MANIPULATION'].rank"></dots>
-                    </div>
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.INTELLIGENCE}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['INTELLIGENCE'].rank"></dots>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.STAMINA}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['STAMINA'].rank"></dots>
-                    </div>
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.APPEARANCE}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['APPEARANCE'].rank"></dots>
-                    </div>
-                    <div class="medium-2 columns">
-                        <span class="boxed">{{character.AttributeEnum.WITS}}</span>
-                    </div>
-                    <div class="medium-2 columns">
-                        <dots ng-model="character.attributeRanks['WITS'].rank"></dots>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Abilities, Merits, etc. -->
-        <div class="row">
-
-            <div class="large-4 columns">
-                <div class="panel">
-                    <h5>Abilities</h5>
-                    <div class="row" ng-repeat="abilityRank in character.abilityRanks">
-                        <div class="medium-6 columns">
-                            <span class="boxed">{{character.AbilityEnum[abilityRank.abilityId]}}</span>
-                        </div>
-                        <div class="medium-6 columns">
-                            <dots ng-model="abilityRank.rank"></dots>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-8 columns">
-                <!-- Merits panel -->
-                <div class="panel">
-                    <div class="row">
-                        <h5>Merits</h5>
-                        <div class="large-10 columns">
-                            <select ng-model="selectedMerit" ng-options="merit.id as merit.name for merit in meritsList | orderBy:'name'" placeholder="{{addMeritPlaceholder}}"></select>
-                        </div>
-                        <div class="large-2 columns">
-                            <button class="button" ng-click="addMerit(selectedMerit)">+</button>
-                        </div>
-                    </div>
-                    <div class="row" ng-repeat="(meritId, meritRank) in character.meritRanks">
-                        <div class="large-6 columns">
-                            <span class="boxed">{{labelForMerit(merits[meritId])}}</span>
-                        </div>
-                        <div class="large-4 columns">
-                            <dots ng-model="meritRank.rank" allowed-values=merits[meritId].availableDots></dots>
-                        </div>
-                        <div class="large-2 columns">
-                            <button class="button" ng-click="removeMerit(meritId)">-</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Merits panel -->
-
-                <div class="row">
-
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h5>Willpower</h5>
-                            <p>Willpower panel contents here.</p>
-                        </div>
-                    </div>
-
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h5>Limit Break</h5>
-                            <p>Limit Break panel contents here.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h5>Essence</h5>
-                            <p>Essence panel contents here.</p>
-                        </div>
-                    </div>
-
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h5>Limit Trigger</h5>
-                            <p>Limit Trigger panel contents here.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h5>Experience</h5>
-                            <p>Experience panel contents here.</p>
-                        </div>
-                    </div>
-
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h5>Solar Experience</h5>
-                            <p>Solar Experience panel contents here.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="large-12 columns">
-                        <div class="panel">
-                            <h5>Weapons</h5>
-                            <p>Weapons panel contents here.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="panel">
-                    <div class="row">
-                        <h5>Martial Arts</h5>
-                        <div class="large-10 columns">
-                            <select ng-model="selectedMartialArt" ng-options="ma.id as ma.name for ma in martialArtsList | orderBy:'name'" placeholder="{{addMartialArtPlaceholder}}"></select>
-                        </div>
-                        <div class="large-2 columns">
-                            <button class="button" ng-click="addMartialArt(selectedMartialArt)">+</button>
-                        </div>
-                    </div>
-                    <div class="row" ng-repeat="(martialArtId, martialArtRank) in character.martialArtsRanks">
-                        <div class="large-6 columns">
-                            <span class="boxed">{{martialArts[martialArtId].name}}</span>
-                        </div>
-                        <div class="large-4 columns">
-                            <dots ng-model="martialArtRank.rank"></dots>
-                        </div>
-                        <div class="large-2 columns">
-                            <button class="button" ng-click="removeMartialArt(martialArtId)">-</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel">
-                    <div class="row">
-                        <h5>Crafts</h5>
-                        <div class="large-10 columns">
-                            <input ng-model="selectedCraft" placeholder="{{addCraftPlaceholder}}">
-                        </div>
-                        <div class="large-2 columns">
-                            <button class="button" ng-click="addCraft(selectedCraft)">+</button>
-                        </div>
-                    </div>
-                    <div class="row" ng-repeat="(craftId, craftRank) in character.craftsRanks">
-                        <div class="large-6 columns">
-                            <span class="boxed">{{craftId}}</span>
-                        </div>
-                        <div class="large-4 columns">
-                            <dots ng-model="craftRank.rank"></dots>
-                        </div>
-                        <div class="large-2 columns">
-                            <button class="button" ng-click="removeCraft(craftId)">-</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="large-12 columns">
-                <div class="panel">
-                    <h5>Health & Defense</h5>
-                    <p>Health & Defense panel contents here</p>
-                </div>
-            </div>
+        <div layout="row" ng-show="isNewCharacter()">
+            <span flex="50" class="label boxed">Bonus Points</span>
+            <span flex="25">{{spentBonusPoints}}</span>
+            <input flex="25" type="number" id="totalXPInput" placeholder="{{totalBonusPoints}}">
         </div>
     </div>
 
-    <!-- Debugging: Show character as JSON at bottom of sheet. -->
-    <div class="large-12 columns">
-        <div class="row">
-            <div class="panel">
-                <textarea rows="40" readonly="true">{{character | json}}</textarea>
-            </div>
+    <div layout="column" flex="33">
+        <h5>Character</h5>
+        <div layout="row">
+            <span flex="25">Name</span>
+            <input type="text" ng-model="character.name" flex="75">
+        </div>
+        <div layout="row">
+            <span flex="25">Player</span>
+            <input flex="75" type="text" ng-model="character.playerName">
+        </div>
+        <label>Caste
+            <select ng-model="character.caste" ng-options="casteName for casteName in casteList"></select>
+        </label>
+    </div>
+    <div class="column" flex="33">
+        <h5>Concept & Anima</h5>
+        <div layout="row">
+            <label>Concept
+                <input type="text" ng-model="character.concept" placeholder="{{conceptPlaceholder}}">
+            </label>
+        </div>
+        <div layout="row">
+            <label>Anima
+                <input type="text" ng-model="character.anima" placeholder="{{animaPlaceholder}}">
+            </label>
+        </div>
+
+    </div>
+</div>
+
+<!-- Attributes section -->
+<div layout="row">
+    <span flex="15">{{character.AttributeEnum.STRENGTH}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['STRENGTH'].rank"></dots>
+    <span flex="15">{{character.AttributeEnum.CHARISMA}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['CHARISMA'].rank"></dots>
+    <span flex="15">{{character.AttributeEnum.PERCEPTION}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['PERCEPTION'].rank"></dots>
+</div>
+<div layout="row">
+    <span flex="15">{{character.AttributeEnum.DEXTERITY}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['DEXTERITY'].rank"></dots>
+    <span flex="15">{{character.AttributeEnum.MANIPULATION}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['MANIPULATION'].rank"></dots>
+    <span flex="15">{{character.AttributeEnum.INTELLIGENCE}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['INTELLIGENCE'].rank"></dots>
+</div>
+<div layout="row">
+    <span flex="15">{{character.AttributeEnum.STAMINA}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['STAMINA'].rank"></dots>
+    <span flex="15">{{character.AttributeEnum.APPEARANCE}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['APPEARANCE'].rank"></dots>
+    <span flex="15">{{character.AttributeEnum.WITS}}</span>
+    <dots flex="15" ng-model="character.attributeRanks['WITS'].rank"></dots>
+</div>
+
+<div layout="row">
+    <!-- Abilities -->
+    <div layout="column" flex="33">
+        <h5>Abilities</h5>
+        <div layout="row" ng-repeat="abilityRank in character.abilityRanks">
+            <span flex="50" class="boxed">{{character.AbilityEnum[abilityRank.abilityId]}}</span>
+            <dots flex="50" ng-model="abilityRank.rank"></dots>
         </div>
     </div>
+    <div layout="column" flex="66">
+        <!-- Merits -->
+        <h5>Merits</h5>
+        <div layout="row">
+            <select flex="85" ng-model="selectedMerit" ng-options="merit.id as merit.name for merit in meritsList | orderBy:'name'" placeholder="{{addMeritPlaceholder}}"></select>
+            <button flex="15" class="button" ng-click="addMerit(selectedMerit)">+</button>
+        </div>
+        <div layout="row" ng-repeat="(martialArtId, martialArtRank) in character.martialArtsRanks">
+            <span flex="50" class="boxed">{{labelForMerit(merits[meritId])}}</span>
+            <dots flex="35" ng-model="meritRank.rank" allowed-values=merits[meritId].availableDots></dots>
+            <button flex="15" class="button" ng-click="removeMerit(meritId)">-</button>
+        </div>
+
+        <div layout="row">
+            <div layout="column" flex="50">
+                <h5>Willpower</h5>
+                <p>Willpower panel contents here.</p>
+            </div>
+            <div layout="column" flex="50">
+                <h5>Limit Break</h5>
+                <p>Limit Break panel contents here.</p>
+            </div>
+        </div>
+
+        <div layout="row">
+            <div layout="column" flex="50">
+                <h5>Essence</h5>
+                <p>Essence panel contents here.</p>
+            </div>
+            <div layout="column" flex="50">
+                <h5>Limit Trigger</h5>
+                <p>Limit Trigger panel contents here.</p>
+            </div>
+        </div>
+
+        <div layout="row">
+            <div layout="column" flex="50">
+                <h5>Experience</h5>
+                <p>Experience panel contents here.</p>
+            </div>
+            <div layout="column" flex="50">
+                <h5>Solar Experience</h5>
+                <p>Solar Experience panel contents here.</p>
+            </div>
+        </div>
+
+        <h5>Weapons</h5>
+        <p>Weapons panel contents here.</p>
+
+        <!-- Martial Arts -->
+        <h5>Martial Arts</h5>
+        <div layout="row">
+            <select flex="85" ng-model="selectedMartialArt" ng-options="ma.id as ma.name for ma in martialArtsList | orderBy:'name'" placeholder="{{addMartialArtPlaceholder}}"></select>
+            <button flex="15" class="button" ng-click="addMartialArt(selectedMartialArt)">+</button>
+        </div>
+        <div layout="row" ng-repeat="(martialArtId, martialArtRank) in character.martialArtsRanks">
+            <span flex="50" class="boxed">{{martialArts[martialArtId].name}}</span>
+            <dots flex="35" ng-model="martialArtRank.rank"></dots>
+            <button flex="15" class="button" ng-click="removeMartialArt(martialArtId)">-</button>
+        </div>
+
+        <!-- Crafts -->
+        <h5>Crafts</h5>
+        <div layout="row">
+            <input flex="85" ng-model="selectedCraft" placeholder="{{addCraftPlaceholder}}">
+            <button flex="15" class="button" ng-click="addCraft(selectedCraft)">+</button>
+        </div>
+        <div layout="row" ng-repeat="(craftId, craftRank) in character.craftsRanks">
+            <span flex="50" class="boxed">{{craftId}}</span>
+            <dots flex="35" ng-model="craftRank.rank"></dots>
+            <button flex="15" class="button" ng-click="removeCraft(craftId)">-</button>
+        </div>
+
+        <!-- Health & Defense -->
+        <div layout="row">
+            <h5>Health & Defense</h5>
+            <p>Health & Defense panel contents here</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Debugging: Show character as JSON at bottom of sheet. -->
+<div layout="row">
+    <textarea layout-fill rows="40" readonly="true">{{character | json}}</textarea>
+</div>
