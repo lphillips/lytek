@@ -1,13 +1,39 @@
-<md-sidenav md-component-id="left" class="md-sidenav-left">
-    <md-list>
-        <md-list-item ng-repeat="abilityName in character.AbilityEnum">
-            <md-button href=#/lytek/charms/{{abilityName}}>{{abilityName}}</md-button>
-        </md-list-item>
-    </md-list>
-</md-sidenav>
-<md-button ng-click="openLeftMenu()">
-    Abilities
-</md-button>
-<visnetwork layout-fill class="charmgraph" options="network_options" ng-model="charmData"></visnetwork>
+<div layout-fill layout="row">
+    <!-- Charm Info Panel -->
+    <md-sidenav layout="column" class="md-sidenav-left" md-component-id="right" md-is-locked-open="true">
+        <div layout="column">
+            <div layout="row">
+                <md-button ng-click="openLeftMenu()">
+                    More Charms...
+                </md-button>
+                <md-button ng-click="addCharm()">
+                    Add Charm
+                </md-button>
+            </div>
+
+            <span>Name: {{selectedCharm.name}}</span>
+            <span>Cost: {{selectedCharm.cost}}</span>
+            <span>Mins: {{selectedCharm.ability}} {{selectedCharm.ability_min}}, Essence {{selectedCharm.essence_min}}</span>
+            <span>Type: {{selectedCharm.type}}</span>
+            <span>Keywords: {{selectedCharm.keywords}}</span>
+            <span>Duration: {{selectedCharm.duration}}</span>
+        </div>
+    </md-sidenav>
+    
+    <!-- Charm List -->
+    <md-sidenav md-component-id="left" class="md-sidenav-left">
+        <md-list>
+            <md-list-item ng-repeat="abilityName in character.AbilityEnum">
+                <md-button href=#/lytek/charms/{{abilityName}}>{{abilityName}}</md-button>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+
+    <!-- Charm Graph -->
+    <visnetwork layout-fill class="charmgraph" options="network_options" ng-model="charmData" on-select-node="onSelectNode(selectParams)"></visnetwork>
+
+
+</div>
+
 
 

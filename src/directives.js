@@ -1,29 +1,43 @@
 import 'angular-resource';
 import vis from 'vis';
 
-var lytekDirectives = angular.module("lytekDirectives", []);
+var lytekDirectives = angular.module('lytekDirectives', []);
 export
 default lytekDirectives;
 
 // A directive to include networks rendered by the vis.js framework.
 
-lytekDirectives.directive("visnetwork", function() {
+lytekDirectives.directive('visnetwork', function() {
     return {
-        require: "^ngModel",
-        restrict: "E",
-        template: "<div></div>",
+        require: '^ngModel',
+        restrict: 'E',
+        template: '<div></div>',
         replace: true,
         scope: {
-            ngModel: "=",
-            onSelect: "&",
-            options: "="
+            ngModel: '=',
+            onSelect: '&',
+            onSelectNode: '&',
+            options: '='
         },
         link: function link(scope, element, attrs) {
             var network = new vis.Network(element[0], scope.ngModel, scope.options || {});
 
-            var onSelect = scope.onSelect() || function(prop) {};
-            network.on("select", function(properties) {
-                onSelect(properties);
+            var onSelect = scope.onSelect || function(prop) {};
+            network.on('select', function(params) {
+                scope.$apply(function() {
+                    onSelect({
+                        selectParams: params
+                    });
+                });
+            });
+
+            var onSelectNode = scope.onSelectNode || function(prop) {};
+            network.on('selectNode', function(params) {
+                scope.$apply(function() {
+                    onSelectNode({
+                        selectParams: params
+                    });
+                });
             });
         }
     };

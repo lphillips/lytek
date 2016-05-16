@@ -41,7 +41,6 @@ lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts", "Mer
         //=========================================================================
         $scope.fetchMerits = function() {
             $scope.fetchResource(Merits.query(), $scope.meritsList, $scope.merits);
-            console.log('merits list: ' + $scope.meritsList);
         };
 
         //=========================================================================
@@ -187,19 +186,21 @@ lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts", "Mer
 
 lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$routeParams", "Charms",
     function($scope, $mdSidenav, $routeParams, Charms) {
-        $scope.charms = [];
+        $scope.charms = {};
         $scope.character = new ExaltedCharacter();
+        $scope.selectedCharm = null;
+        
         var charmsResource = Charms.query({
             ability: $routeParams.ability
         });
 
         // When the list of charm is received, build the graph info.
         charmsResource.$promise.then(function(result) {
-            $scope.charms = result;
-
             // Build the list of nodes and edges.
             var nodeLevels = {};
-            angular.forEach($scope.charms, function(charm, key) {
+            $scope.selectedCharm = result[0];
+            angular.forEach(result, function(charm, key) {
+                $scope.charms[charm.id] = charm;
                 nodeLevels[charm.id] = maxPrereqLevel(nodeLevels, charm) + 1;
                 $scope.nodes.add({
                     id: charm.id,
@@ -225,6 +226,11 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$route
             edges: $scope.edges
         };
 
+        $scope.onSelectNode = function(params) {
+            let nodeId = params.nodes[0];
+            $scope.selectedCharm = $scope.charms[nodeId];
+        };
+
         $scope.network_options = {
             autoResize: true,
             height: '100%',
@@ -239,14 +245,14 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$route
                 }
             },
             edges: {
-              arrows: {
-                  to: true
-              }
+                arrows: {
+                    to: true
+                }
             },
             layout: {
                 hierarchical: {
                     enabled: true,
-                    direction:'UD',
+                    direction: 'UD',
                     sortMethod: 'directed',
                     nodeSpacing: 200
                 }
@@ -255,7 +261,7 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$route
                 enabled: false
             }
         };
-        
+
         $scope.openLeftMenu = function() {
             $mdSidenav('left').toggle();
         };
@@ -272,7 +278,7 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$route
             }
             return str;
         }
-        
+
         function maxPrereqLevel(nodeLevels, charm) {
             var maxLevel = 0;
             for (var idx = 0; idx < charm.prereqs.length; idx++) {
