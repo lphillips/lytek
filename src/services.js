@@ -1,4 +1,5 @@
 import angular from 'angular';
+import CharacterService from './services/CharacterService';
 
 /* Services */
 
@@ -23,3 +24,5 @@ lytekServices.factory('Merits', ['$resource',
         return $resource('merits/merits.json', {}, {});
     }
 ]);
+
+lytekServices.factory('CharacterService', [ () => { return new CharacterService(); }]);

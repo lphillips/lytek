@@ -14,8 +14,8 @@ var lytekControllers = angular.module('lytekControllers', []);
 export
 default lytekControllers;
 
-lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts", "Merits",
-    function($scope, MartialArts, Merits) {
+lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts", "Merits", "CharacterService",
+    function($scope, MartialArts, Merits, CharacterService) {
 
         //=========================================================================
         // fetchResource(resource, resultsArray)
@@ -52,7 +52,7 @@ lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts", "Mer
         $scope.totalBonusPoints = 15;
         $scope.spentBonusPoints = 0;
 
-        $scope.character = new SolarCharacter();
+        $scope.character = CharacterService.createNew();
         $scope.character.name = "Damascus";
         $scope.character.playerName = "Luke";
         $scope.character.caste = SolarCharacter.SolarCaste.ZENITH;
@@ -184,10 +184,10 @@ lytekControllers.controller("CharacterSheetCtrl", ["$scope", "MartialArts", "Mer
     }
 ]);
 
-lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$routeParams", "Charms",
-    function($scope, $mdSidenav, $routeParams, Charms) {
+lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$routeParams", "Charms", 'CharacterService',
+    function($scope, $mdSidenav, $routeParams, Charms, CharacterService) {
         $scope.charms = {};
-        $scope.character = new ExaltedCharacter();
+        $scope.character = CharacterService.character;
         $scope.selectedCharm = null;
         
         var charmsResource = Charms.query({
