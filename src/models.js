@@ -4,21 +4,21 @@
 
 export class ExaltedCharacter {
     constructor() {
-        this.name = "";
-        this.playerName = "";
-        this.concept = "Big old sucka";
+        this.name = '';
+        this.playerName = '';
+        this.concept = 'Big old sucka';
         this.essence = 1;
 
         this.AttributeEnum = {
-            STRENGTH: "Strength",
-            DEXTERITY: "Dexterity",
-            STAMINA: "Stamina",
-            CHARISMA: "Charisma",
-            MANIPULATION: "Manipulation",
-            APPEARANCE: "Appearance",
-            INTELLIGENCE: "Intellligence",
-            WITS: "Wits",
-            PERCEPTION: "Perception"
+            STRENGTH: 'Strength',
+            DEXTERITY: 'Dexterity',
+            STAMINA: 'Stamina',
+            CHARISMA: 'Charisma',
+            MANIPULATION: 'Manipulation',
+            APPEARANCE: 'Appearance',
+            INTELLIGENCE: 'Intellligence',
+            WITS: 'Wits',
+            PERCEPTION: 'Perception'
         };
 
         // Attribute Ranks
@@ -30,41 +30,41 @@ export class ExaltedCharacter {
         }
 
         this.AbilityEnum = {
-            ARCHERY: "Archery",
-            ATHLETICS: "Athletics",
-            AWARENESS: "Awareness",
-            BRAWL: "Brawl",
-            BUREAUCRACY: "Bureaucracy",
-            CRAFT: "Craft",
-            DODGE: "Dodge",
-            INTEGRITY: "Integrity",
-            INVESTIGATION: "Investigation",
-            LARCENY: "Larceny",
-            LINGUISTICS: "Linguistics",
-            LORE: "Lore",
-            MARTIAL_ARTS: "Martial Arts",
-            MEDICINE: "Medicine",
-            MELEE: "Melee",
-            OCCULT: "Occult",
-            PERFORMANCE: "Performance",
-            PRESENCE: "Presence",
-            RESISTANCE: "Resistance",
-            RIDE: "Ride",
-            SAIL: "Sail",
-            SOCIALIZE: "Socialize",
-            STEALTH: "Stealth",
-            SURVIVAL: "Survival",
-            THROWN: "Thrown",
-            WAR: "War"
+            ARCHERY: 'Archery',
+            ATHLETICS: 'Athletics',
+            AWARENESS: 'Awareness',
+            BRAWL: 'Brawl',
+            BUREAUCRACY: 'Bureaucracy',
+            CRAFT: 'Craft',
+            DODGE: 'Dodge',
+            INTEGRITY: 'Integrity',
+            INVESTIGATION: 'Investigation',
+            LARCENY: 'Larceny',
+            LINGUISTICS: 'Linguistics',
+            LORE: 'Lore',
+            MARTIAL_ARTS: 'Martial Arts',
+            MEDICINE: 'Medicine',
+            MELEE: 'Melee',
+            OCCULT: 'Occult',
+            PERFORMANCE: 'Performance',
+            PRESENCE: 'Presence',
+            RESISTANCE: 'Resistance',
+            RIDE: 'Ride',
+            SAIL: 'Sail',
+            SOCIALIZE: 'Socialize',
+            STEALTH: 'Stealth',
+            SURVIVAL: 'Survival',
+            THROWN: 'Thrown',
+            WAR: 'War'
         };
 
         // Ability ranks
         this.abilityRanks = [];
         for (var ability in this.AbilityEnum) {
             let newAbilityRank = null;
-            if (ability === "CRAFT") {
+            if (ability === 'CRAFT') {
                 newAbilityRank = new AbilityGroupRank(ability, this.craftsRanks);
-            } else if (ability === "MARTIAL_ARTS") {
+            } else if (ability === 'MARTIAL_ARTS') {
                 newAbilityRank = new AbilityGroupRank(ability, this.martialArtsRanks);
             } else {
                 newAbilityRank = new AbilityRank(ability, 0);
@@ -80,6 +80,7 @@ export class ExaltedCharacter {
         // Charms
         this.charms = {};
 
+        // XP
         this.spentXP = 0;
         this.totalXP = 0;
     }
@@ -108,19 +109,19 @@ export class SolarCharacter extends ExaltedCharacter {
     constructor() {
         super();
         this.caste = SolarCharacter.SolarCaste.DAWN;
-        this.supernalAbility = "What";
-        this.anima = "Yeah";
+        this.supernalAbility = 'What';
+        this.anima = 'Yeah';
 
         this.spentSolarXP = 0;
         this.totalSolarXP = 0;
     }
 }
 SolarCharacter.SolarCaste = {
-    DAWN: "Dawn",
-    ZENITH: "Zenith",
-    TWILIGHT: "Twilight",
-    NIGHT: "Night",
-    ECLIPSE: "Eclipse"
+    DAWN: 'Dawn',
+    ZENITH: 'Zenith',
+    TWILIGHT: 'Twilight',
+    NIGHT: 'Night',
+    ECLIPSE: 'Eclipse'
 };
 
 //=============================================================================
