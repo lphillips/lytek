@@ -265,6 +265,11 @@ lytekControllers.controller("CharmBrowserCtrl", ["$scope", "$mdSidenav", "$route
         $scope.openLeftMenu = function() {
             $mdSidenav('left').toggle();
         };
+        
+        $scope.addCharm = function(charm) {
+            console.log(charm);
+            $scope.character.charms[charm.id] = charm; 
+        };
 
         function stringDivider(str, width, prefix, postfix) {
             if (str.length > width) {

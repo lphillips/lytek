@@ -1,12 +1,12 @@
 <div layout-fill layout="row">
     <!-- Charm Info Panel -->
     <md-sidenav layout="column" class="md-sidenav-left" md-component-id="right" md-is-locked-open="true">
-        <div layout="column">
+        <div layout="column" flex>
             <div layout="row">
                 <md-button ng-click="openLeftMenu()">
                     More Charms...
                 </md-button>
-                <md-button ng-click="addCharm()">
+                <md-button ng-click="addCharm(selectedCharm)">
                     Add Charm
                 </md-button>
             </div>
@@ -18,8 +18,12 @@
             <span>Keywords: {{selectedCharm.keywords}}</span>
             <span>Duration: {{selectedCharm.duration}}</span>
         </div>
+        <md-divider></md-divider>
+        <div layout="column" flex>
+            <span ng-repeat="(charmId, charm) in character.charms">{{charm.name}}</span>
+        </div>
     </md-sidenav>
-    
+
     <!-- Charm List -->
     <md-sidenav md-component-id="left" class="md-sidenav-left">
         <md-list>

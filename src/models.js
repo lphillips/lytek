@@ -76,6 +76,9 @@ export class ExaltedCharacter {
         this.meritRanks = {};
         this.martialArtsRanks = {};
         this.craftsRanks = {};
+        
+        // Charms
+        this.charms = {};
 
         this.spentXP = 0;
         this.totalXP = 0;
