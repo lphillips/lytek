@@ -22,7 +22,8 @@ lytekApp.config(["$routeProvider", "$logProvider",
             controllerAs: "charSheetCtrl"
         }).when("/lytek/charms/:ability", {
             templateUrl: "partials/charm-browser.html",
-            controller: "CharmBrowserCtrl"
+            controller: "CharmBrowserCtrl",
+            controllerAs: "charmBrowserCtrl"
         }).otherwise({
             redirectTo: function redirectTo(routeParams, path, search) {
                 return "/lytek";
