@@ -42,9 +42,9 @@ var config = {
     },
     plugins: [
         new cleanPlugin(['dist']),
-        new ngAnnotatePlugin({
-            add: true
-        }),
+//        new ngAnnotatePlugin({
+//            add: true
+//        }),
         new ExtractTextPlugin('styles.css'),
         //        new webpack.optimize.UglifyJsPlugin({
         //            compress: {

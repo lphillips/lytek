@@ -6,7 +6,7 @@ export class ExaltedCharacter {
     constructor() {
         this.name = '';
         this.playerName = '';
-        this.concept = 'Big old sucka';
+        this.concept = '';
         this.essence = 1;
 
         this.AttributeEnum = {

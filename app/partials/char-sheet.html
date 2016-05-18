@@ -2,26 +2,26 @@
 <div layout="row">
 
     <div layout="column" flex="33">
-        <h5 ng-hide="isNewCharacter()">Experience</h5>
-        <h5 ng-show="isNewCharacter()">Bonus Points</h5>
+        <h5 ng-hide="charSheetCtrl.isNewCharacter()">Experience</h5>
+        <h5 ng-show="charSheetCtrl.isNewCharacter()">Bonus Points</h5>
         <div layout="row">
             <span flex="25" flex-offset="50" class="boxed">Spent</span>
             <span flex="25" class="boxed">Total</span>
         </div>
-        <div layout="row" ng-hide="isNewCharacter()">
+        <div layout="row" ng-hide="charSheetCtrl.isNewCharacter()">
             <span flex="50" class="label boxed">XP</span>
-            <span flex="25" class="textbox-center">{{character.spentXP}}</span>
-            <input flex="25" type="number" id="totalXPInput" placeholder="{{character.totalXP}}">
+            <span flex="25" class="textbox-center">{{charSheetCtrl.character.spentXP}}</span>
+            <input flex="25" type="number" id="totalXPInput" placeholder="{{charSheetCtrl.character.totalXP}}">
         </div>
-        <div layout="row" ng-hide="isNewCharacter()">
+        <div layout="row" ng-hide="charSheetCtrl.isNewCharacter()">
             <span flex="50" class="label boxed">Solar XP</span>
-            <span flex="25" class="textbox-center">{{character.spentSolarXP}}</span>
-            <input flex="25" type="number" id="totalXPInput" placeholder="{{character.totalSolarXP}}">
+            <span flex="25" class="textbox-center">{{charSheetCtrl.character.spentSolarXP}}</span>
+            <input flex="25" type="number" id="totalXPInput" placeholder="{{charSheetCtrl.character.totalSolarXP}}">
         </div>
-        <div layout="row" ng-show="isNewCharacter()">
+        <div layout="row" ng-show="charSheetCtrl.isNewCharacter()">
             <span flex="50" class="label boxed">Bonus Points</span>
-            <span flex="25">{{spentBonusPoints}}</span>
-            <input flex="25" type="number" id="totalXPInput" placeholder="{{totalBonusPoints}}">
+            <span flex="25">{{charSheetCtrl.spentBonusPoints}}</span>
+            <input flex="25" type="number" id="totalXPInput" placeholder="{{charSheetCtrl.totalBonusPoints}}">
         </div>
     </div>
 
@@ -29,26 +29,26 @@
         <h5>Character</h5>
         <div layout="row">
             <span flex="25">Name</span>
-            <input type="text" ng-model="character.name" flex="75">
+            <input type="text" ng-model="charSheetCtrl.character.name" flex="75">
         </div>
         <div layout="row">
             <span flex="25">Player</span>
-            <input flex="75" type="text" ng-model="character.playerName">
+            <input flex="75" type="text" ng-model="charSheetCtrl.character.playerName">
         </div>
         <label>Caste
-            <select ng-model="character.caste" ng-options="casteName for casteName in casteList"></select>
+            <select ng-model="character.caste" ng-options="casteName for casteName in charSheetCtrl.casteList"></select>
         </label>
     </div>
     <div class="column" flex="33">
         <h5>Concept & Anima</h5>
         <div layout="row">
             <label>Concept
-                <input type="text" ng-model="character.concept" placeholder="{{conceptPlaceholder}}">
+                <input type="text" ng-model="charSheetCtrl.character.concept" placeholder="{{charSheetCtrl.conceptPlaceholder}}">
             </label>
         </div>
         <div layout="row">
             <label>Anima
-                <input type="text" ng-model="character.anima" placeholder="{{animaPlaceholder}}">
+                <input type="text" ng-model="charSheetCtrl.character.anima" placeholder="{{charSheetCtrl.animaPlaceholder}}">
             </label>
         </div>
 
@@ -57,36 +57,36 @@
 
 <!-- Attributes section -->
 <div layout="row">
-    <span flex="15">{{character.AttributeEnum.STRENGTH}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['STRENGTH'].rank"></dots>
-    <span flex="15">{{character.AttributeEnum.CHARISMA}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['CHARISMA'].rank"></dots>
-    <span flex="15">{{character.AttributeEnum.PERCEPTION}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['PERCEPTION'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.STRENGTH}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['STRENGTH'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.CHARISMA}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['CHARISMA'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.PERCEPTION}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['PERCEPTION'].rank"></dots>
 </div>
 <div layout="row">
-    <span flex="15">{{character.AttributeEnum.DEXTERITY}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['DEXTERITY'].rank"></dots>
-    <span flex="15">{{character.AttributeEnum.MANIPULATION}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['MANIPULATION'].rank"></dots>
-    <span flex="15">{{character.AttributeEnum.INTELLIGENCE}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['INTELLIGENCE'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.DEXTERITY}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['DEXTERITY'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.MANIPULATION}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['MANIPULATION'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.INTELLIGENCE}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['INTELLIGENCE'].rank"></dots>
 </div>
 <div layout="row">
-    <span flex="15">{{character.AttributeEnum.STAMINA}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['STAMINA'].rank"></dots>
-    <span flex="15">{{character.AttributeEnum.APPEARANCE}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['APPEARANCE'].rank"></dots>
-    <span flex="15">{{character.AttributeEnum.WITS}}</span>
-    <dots flex="15" ng-model="character.attributeRanks['WITS'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.STAMINA}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['STAMINA'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.APPEARANCE}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['APPEARANCE'].rank"></dots>
+    <span flex="15">{{charSheetCtrl.character.AttributeEnum.WITS}}</span>
+    <dots flex="15" ng-model="charSheetCtrl.character.attributeRanks['WITS'].rank"></dots>
 </div>
 
 <div layout="row">
     <!-- Abilities -->
     <div layout="column" flex="33">
         <h5>Abilities</h5>
-        <div layout="row" ng-repeat="abilityRank in character.abilityRanks">
-            <span flex="50" class="boxed">{{character.AbilityEnum[abilityRank.abilityId]}}</span>
+        <div layout="row" ng-repeat="abilityRank in charSheetCtrl.character.abilityRanks">
+            <span flex="50" class="boxed">{{charSheetCtrl.character.AbilityEnum[abilityRank.abilityId]}}</span>
             <dots flex="50" ng-model="abilityRank.rank"></dots>
         </div>
     </div>
@@ -94,13 +94,13 @@
         <!-- Merits -->
         <h5>Merits</h5>
         <div layout="row">
-            <select flex="85" ng-model="selectedMerit" ng-options="merit.id as merit.name for merit in meritsList | orderBy:'name'" placeholder="{{addMeritPlaceholder}}"></select>
-            <button flex="15" class="button" ng-click="addMerit(selectedMerit)">+</button>
+            <select flex="85" ng-model="charSheetCtrl.selectedMerit" ng-options="merit.id as merit.name for merit in charSheetCtrl.meritsList | orderBy:'name'" placeholder="{{charSheetCtrl.addMeritPlaceholder}}"></select>
+            <button flex="15" class="button" ng-click="charSheetCtrl.addMerit(charSheetCtrl.selectedMerit)">+</button>
         </div>
-        <div layout="row" ng-repeat="(martialArtId, martialArtRank) in character.martialArtsRanks">
-            <span flex="50" class="boxed">{{labelForMerit(merits[meritId])}}</span>
-            <dots flex="35" ng-model="meritRank.rank" allowed-values=merits[meritId].availableDots></dots>
-            <button flex="15" class="button" ng-click="removeMerit(meritId)">-</button>
+        <div layout="row" ng-repeat="(meritId, meritRank) in charSheetCtrl.character.meritRanks">
+            <span flex="50" class="boxed">{{charSheetCtrl.labelForMerit(charSheetCtrl.merits[meritId])}}</span>
+            <dots flex="35" ng-model="meritRank.rank" allowed-values=charSheetCtrl.merits[meritId].availableDots></dots>
+            <button flex="15" class="button" ng-click="charSheetCtrl.removeMerit(meritId)">-</button>
         </div>
 
         <div layout="row">
@@ -142,25 +142,25 @@
         <!-- Martial Arts -->
         <h5>Martial Arts</h5>
         <div layout="row">
-            <select flex="85" ng-model="selectedMartialArt" ng-options="ma.id as ma.name for ma in martialArtsList | orderBy:'name'" placeholder="{{addMartialArtPlaceholder}}"></select>
-            <button flex="15" class="button" ng-click="addMartialArt(selectedMartialArt)">+</button>
+            <select flex="85" ng-model="charSheetCtrl.selectedMartialArt" ng-options="ma.id as ma.name for ma in charSheetCtrl.martialArtsList | orderBy:'name'" placeholder="{{charSheetCtrl.addMartialArtPlaceholder}}"></select>
+            <button flex="15" class="button" ng-click="charSheetCtrl.addMartialArt(charSheetCtrl.selectedMartialArt)">+</button>
         </div>
-        <div layout="row" ng-repeat="(martialArtId, martialArtRank) in character.martialArtsRanks">
-            <span flex="50" class="boxed">{{martialArts[martialArtId].name}}</span>
+        <div layout="row" ng-repeat="(martialArtId, martialArtRank) in charSheetCtrl.character.martialArtsRanks">
+            <span flex="50" class="boxed">{{charSheetCtrl.martialArts[martialArtId].name}}</span>
             <dots flex="35" ng-model="martialArtRank.rank"></dots>
-            <button flex="15" class="button" ng-click="removeMartialArt(martialArtId)">-</button>
+            <button flex="15" class="button" ng-click="charSheetCtrl.removeMartialArt(martialArtId)">-</button>
         </div>
 
         <!-- Crafts -->
         <h5>Crafts</h5>
         <div layout="row">
-            <input flex="85" ng-model="selectedCraft" placeholder="{{addCraftPlaceholder}}">
-            <button flex="15" class="button" ng-click="addCraft(selectedCraft)">+</button>
+            <input flex="85" ng-model="charSheetCtrl.selectedCraft" placeholder="{{charSheetCtrl.addCraftPlaceholder}}">
+            <button flex="15" class="button" ng-click="charSheetCtrl.addCraft(charSheetCtrl.selectedCraft)">+</button>
         </div>
-        <div layout="row" ng-repeat="(craftId, craftRank) in character.craftsRanks">
+        <div layout="row" ng-repeat="(craftId, craftRank) in charSheetCtrl.character.craftsRanks">
             <span flex="50" class="boxed">{{craftId}}</span>
             <dots flex="35" ng-model="craftRank.rank"></dots>
-            <button flex="15" class="button" ng-click="removeCraft(craftId)">-</button>
+            <button flex="15" class="button" ng-click="charSheetCtrl.removeCraft(craftId)">-</button>
         </div>
 
         <!-- Health & Defense -->
@@ -174,5 +174,5 @@
 
 <!-- Debugging: Show character as JSON at bottom of sheet. -->
 <div layout="row">
-    <textarea layout-fill rows="40" readonly="true">{{character | json}}</textarea>
+    <textarea layout-fill rows="40" readonly="true">{{charSheetCtrl.character | json}}</textarea>
 </div>

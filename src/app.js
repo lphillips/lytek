@@ -18,7 +18,8 @@ lytekApp.config(["$routeProvider", "$logProvider",
 
         $routeProvider.when("/lytek", {
             templateUrl: "partials/char-sheet.html",
-            controller: "CharacterSheetCtrl"
+            controller: "CharacterSheetCtrl",
+            controllerAs: "charSheetCtrl"
         }).when("/lytek/charms/:ability", {
             templateUrl: "partials/charm-browser.html",
             controller: "CharmBrowserCtrl"
