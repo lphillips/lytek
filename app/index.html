@@ -5,18 +5,56 @@
     <meta charset="utf-8">
     <title>Lytek - Exalted Character Creator</title>
     <link rel="stylesheet" href="styles.css">
-    <!--    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">-->
-    <!--    <link rel="stylesheet" href="bower_components/vis/dist/vis.css">-->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy">
-    <!--    <link rel="stylesheet" href="css/lytek.css">-->
-
-    <!--
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/angular-material/angular-material.min.js"></script>
--->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
+    <div ng-controller="LytekCtrl as lytekCtrl" layout-fill>
+        <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+                <md-menu>
+                    <md-button class="md-icon-button" aria-label="Character" ng-click="$mdOpenMenu()">
+                        <div class="material-icons">menu</div>
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button href="#">
+                                New
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>
+                                Open
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>
+                                Save
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>
+                                Export to PDF
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+                <h2><span>Lytek</span></h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <md-tabs flex layout-fill>
+            <md-tab flex ng-repeat="tab in lytekCtrl.tabs" md-on-select="lytekCtrl.switchTab($index)" label="{{tab}}">
+                <md-tab-content flex layout-fill>
+                    <div ng-view flex layout-fill></div>
+                </md-tab-content>
+            </md-tab>
+        </md-tabs>
+
+        <!--
     <md-menu-bar>
         <md-menu>
             <button ng-click="$mdOpenMenu()">
@@ -55,8 +93,9 @@
             Martial Arts Browser
         </button>
     </md-menu-bar>
+-->
+    </div>
 
-    <div ng-view layout-fill></div>
 
     <script src="bundle.js"></script>
 </body>

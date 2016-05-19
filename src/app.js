@@ -12,9 +12,14 @@ import lytekDirectives from './directives';
 
 var lytekApp = angular.module("lytekApp", ["ngRoute", "ngMaterial", lytekControllers.name, lytekServices.name, lytekDirectives.name]);
 
-lytekApp.config(["$routeProvider", "$logProvider",
-    function($routeProvider, $logProvider) {
+lytekApp.config(["$routeProvider", "$logProvider", "$mdThemingProvider",
+
+    function($routeProvider, $logProvider, $mdThemingProvider) {
         $logProvider.debugInfoEnabled = true;
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('pink')
+            .accentPalette('orange');
 
         $routeProvider.when("/lytek", {
             templateUrl: "partials/char-sheet.html",
@@ -32,4 +37,5 @@ lytekApp.config(["$routeProvider", "$logProvider",
     }
 ]);
 
-export default lytekApp;
+export
+default lytekApp;
