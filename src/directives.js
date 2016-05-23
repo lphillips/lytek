@@ -1,5 +1,5 @@
-import 'angular-resource';
 import vis from 'vis';
+
 
 var lytekDirectives = angular.module('lytekDirectives', []);
 export
@@ -20,25 +20,8 @@ lytekDirectives.directive('visnetwork', function() {
             options: '='
         },
         link: function link(scope, element, attrs) {
-            var network = new vis.Network(element[0], scope.ngModel, scope.options || {});
-
-            var onSelect = scope.onSelect || function(prop) {};
-            network.on('select', function(params) {
-                scope.$apply(function() {
-                    onSelect({
-                        selectParams: params
-                    });
-                });
-            });
-
-            var onSelectNode = scope.onSelectNode || function(prop) {};
-            network.on('selectNode', function(params) {
-                scope.$apply(function() {
-                    onSelectNode({
-                        selectParams: params
-                    });
-                });
-            });
+            let network = new vis.Network(element[0]);
+            scope.ngModel = network;
         }
     };
 });

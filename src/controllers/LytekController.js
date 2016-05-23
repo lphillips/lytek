@@ -5,11 +5,11 @@ export default class LytekController {
         this.$location = $location;
     }
     
-    switchTab(index) {
+    tabView(index) {
         switch(index) {
-            case 0: this.$location.path('/lytek'); break;
-            case 1: this.$location.path('/lytek/charms/awareness'); break;
-            default: this.$location.path('/lytek'); break;
+            case 0: return 'partials/char-sheet.html';
+            case 1: return 'partials/charm-browser.html';
+            default: return 'partials/char-sheet.html';
         }
     }
 }

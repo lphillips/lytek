@@ -1,5 +1,6 @@
 import angular from 'angular';
 import CharacterService from './services/CharacterService';
+import 'angular-resource';
 
 /* Services */
 

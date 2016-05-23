@@ -1,4 +1,4 @@
-<div layout-fill layout="row">
+<div layout-fill layout="row" ng-controller="CharmBrowserCtrl as charmBrowserCtrl">
     <!-- Charm Info Panel -->
     <md-sidenav layout="column" class="md-sidenav-left" md-component-id="right" md-is-locked-open="true">
         <div layout="column" flex>
@@ -28,13 +28,13 @@
     <md-sidenav md-component-id="left" class="md-sidenav-left">
         <md-list>
             <md-list-item ng-repeat="abilityName in charmBrowserCtrl.character.AbilityEnum">
-                <md-button href=#/lytek/charms/{{abilityName}}>{{abilityName}}</md-button>
+                <md-button ng-click="charmBrowserCtrl.loadCharmTree(abilityName)">{{abilityName}}</md-button>
             </md-list-item>
         </md-list>
     </md-sidenav>
 
     <!-- Charm Graph -->
-    <visnetwork layout-fill class="charmgraph" options="charmBrowserCtrl.network_options" ng-model="charmBrowserCtrl.charmData" on-select-node="charmBrowserCtrl.onSelectNode(selectParams)"></visnetwork>
+    <visnetwork layout-fill class="charmgraph" options="charmBrowserCtrl.network_options" ng-model="charmBrowserCtrl.charmTreeNetwork" on-select-node="charmBrowserCtrl.onSelectNode(selectParams)"></visnetwork>
 
 </div>
 

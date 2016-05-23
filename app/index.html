@@ -47,9 +47,9 @@
         </md-toolbar>
 
         <md-tabs flex layout-fill>
-            <md-tab flex ng-repeat="tab in lytekCtrl.tabs" md-on-select="lytekCtrl.switchTab($index)" label="{{tab}}">
+            <md-tab flex ng-repeat="tab in lytekCtrl.tabs" label="{{tab}}">
                 <md-tab-content flex layout-fill>
-                    <div ng-view flex layout-fill></div>
+                    <ng-include src="lytekCtrl.tabView($index)"></ng-include>
                 </md-tab-content>
             </md-tab>
         </md-tabs>

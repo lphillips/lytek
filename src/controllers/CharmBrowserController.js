@@ -9,47 +9,18 @@ import 'vis/dist/vis.css';
 
 export
 default class CharmBrowserController {
-    constructor($mdSidenav, $routeParams, Charms, CharacterService) {
+    constructor($scope, $document, $mdSidenav, Charms, CharacterService) {
         /* @ngInject */
-        this.charms = {};
+        this.$scope = $scope;
+        this.charmNetworkName = 'charmTreeNetwork';
+        this.$mdSidenav = $mdSidenav;
+        this.CharmsService = Charms;
+        this.charmTreeNetwork = null;
+
         this.character = CharacterService.character;
         this.selectedCharm = null;
 
-        let charmsResource = Charms.query({
-            ability: $routeParams.ability
-        });
-
-        // When the list of charm is received, build the graph info.
-        charmsResource.$promise.then((result) => {
-            // Build the list of nodes and edges.
-            let nodeLevels = {};
-            this.selectedCharm = result[0];
-            angular.forEach(result, (charm, key) => {
-                this.charms[charm.id] = charm;
-                nodeLevels[charm.id] = this.maxPrereqLevel(nodeLevels, charm) + 1;
-                this.nodes.add({
-                    id: charm.id,
-                    label: this.stringDivider(charm.name, 16, '', '\n'),
-                    level: nodeLevels[charm.id]
-                });
-
-                angular.forEach(charm.prereqs, (charmId, key) => {
-                    this.edges.add({
-                        id: charmId + charm.id,
-                        from: charmId,
-                        to: charm.id
-                    });
-                });
-            });
-        });
-
-        this.nodes = new vis.DataSet();
-        this.edges = new vis.DataSet();
-
-        this.charmData = {
-            nodes: this.nodes,
-            edges: this.edges
-        };
+        this.loadCharmTree('awareness');
 
         this.network_options = {
             autoResize: true,
@@ -83,8 +54,66 @@ default class CharmBrowserController {
         };
     }
 
+    get charmTreeNetwork() {
+        return this._charmTreeNetwork;
+    }
+
+    set charmTreeNetwork(network) {
+        this._charmTreeNetwork = network;
+        if (this._charmTreeNetwork) {
+            this._charmTreeNetwork.on('selectNode', (params) => {
+                this.onSelectNode(params);
+            });
+        }
+    }
+
     openLeftMenu() {
-        $mdSidenav('left').toggle();
+        this.$mdSidenav('left').toggle();
+    }
+
+    loadCharmTree(charmTreeName) {
+        // Clear the previously loaded charms.
+        this.charms = {};
+
+        // Begin the load of the new charm trees.
+        let charmsResource = this.CharmsService.query({
+            ability: charmTreeName
+        });
+
+        // When the list of charm is received, build the graph info.
+        charmsResource.$promise.then((result) => {
+            // Build the list of nodes and edges.
+            let nodeLevels = {};
+            this.selectedCharm = result[0];
+
+            let nodes = new vis.DataSet();
+            let edges = new vis.DataSet();
+            let charmData = {
+                nodes: nodes,
+                edges: edges
+            };
+            angular.forEach(result, (charm, key) => {
+                this.charms[charm.id] = charm;
+                nodeLevels[charm.id] = this.maxPrereqLevel(nodeLevels, charm) + 1;
+                nodes.add({
+                    id: charm.id,
+                    label: this.stringDivider(charm.name, 16, '', '\n'),
+                    level: nodeLevels[charm.id]
+                });
+
+                angular.forEach(charm.prereqs, (charmId, key) => {
+                    edges.add({
+                        id: charmId + charm.id,
+                        from: charmId,
+                        to: charm.id
+                    });
+                });
+            });
+
+            this.charmTreeNetwork.setOptions(this.network_options);
+            this.charmTreeNetwork.setData(charmData);
+            this.charmTreeNetwork.redraw();
+        });
     }
 
     addCharm(charm) {
@@ -92,8 +121,10 @@ default class CharmBrowserController {
     }
 
     onSelectNode(params) {
-        let nodeId = params.nodes[0];
-        this.selectedCharm = this.charms[nodeId];
+        this.$scope.$apply(() => {
+            let nodeId = params.nodes[0];
+            this.selectedCharm = this.charms[nodeId];
+        });
     }
 
     stringDivider(str, width, prefix, postfix) {
