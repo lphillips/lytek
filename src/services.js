@@ -1,5 +1,6 @@
 import angular from 'angular';
 import CharacterService from './services/CharacterService';
+import FileService from './services/FileService';
 import 'angular-resource';
 
 /* Services */
@@ -26,4 +27,9 @@ lytekServices.factory('Merits', ['$resource',
     }
 ]);
 
-lytekServices.factory('CharacterService', [ () => { return new CharacterService(); }]);
+let characterServiceArray = CharacterService.$inject;
+characterServiceArray.push(CharacterService);
+let fileServiceArray = FileService.$inject;
+fileServiceArray.push(FileService);
+lytekServices.service('CharacterService', characterServiceArray)
+             .service('FileService', fileServiceArray);

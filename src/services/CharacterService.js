@@ -2,10 +2,13 @@ import {
     ExaltedCharacter, SolarCharacter
 }
 from '../models';
+import angular from 'angular';
 
 export default class CharacterService {
-    constructor() {
+    /* @ngInject */
+    constructor(FileService) {
         this._character = null;
+        this.FileService = FileService;
     }
     
     get character() {
@@ -16,8 +19,15 @@ export default class CharacterService {
         
     }
     
-    load(filename) {
-        
+    load(characterFile) {
+        let promise = this.FileService.read(characterFile).then((result) => {
+            // Create a new Character object, and then merge in the data from
+            // the loaded character JSON.
+            let characterData = JSON.parse(result);
+            this.createNew();
+            angular.merge(this.character, characterData);
+        });
+        return promise;
     }
     
     createNew() {

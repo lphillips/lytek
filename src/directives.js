@@ -26,6 +26,21 @@ lytekDirectives.directive('visnetwork', function() {
     };
 });
 
+lytekDirectives.directive('fileBind', function() {
+    return {
+        scope: {
+            selectedFile: '='
+        },
+        link: function(scope, element, attrs) {
+            element.bind('change', function(event) {
+                scope.$apply(function() {
+                    scope.selectedFile = event.target.files[0];
+                });
+            });
+        }
+    };
+});
+
 lytekDirectives.directive("dots", function() {
     return {
         restrict: "E",
@@ -74,6 +89,7 @@ lytekDirectives.directive("dots", function() {
             // dotVal - The value of last dot to fill, starting from 1.
             //=========================================================
             var redraw = function redraw(dotVal) {
+//                console.log('redraw with dotVal ' + dotVal);
                 var childNodes = element[0].childNodes;
                 for (var index = 0; index < childNodes.length; index++) {
                     var dotElem = childNodes[index];
@@ -91,24 +107,30 @@ lytekDirectives.directive("dots", function() {
             // Observe changes to the ngModel value so we can constrain
             // it to legal values and redraw when it changes.
             //=========================================================
-            scope.$watch("ngModel", function() {
-                var legalValue = closestLegalValue(scope.ngModel, scope.allowedValues);
-                if (legalValue == scope.ngModel) {
-                    redraw(scope.ngModel);
-                } else {
-                    scope.ngModel = legalValue;
+            scope.$watch('ngModel', function(newValue, oldValue) {
+//                console.log('new val: ' + newValue + '; old val: ' + oldValue);
+                if (typeof newValue != 'undefined') {
+                    var legalValue = closestLegalValue(scope.ngModel, scope.allowedValues);
+                    if (legalValue == scope.ngModel) {
+                        redraw(scope.ngModel);
+                    } else {
+                        scope.ngModel = legalValue;
+                    }
                 }
             });
 
             // Create the img element nodes for drawing the widget.
             let imgElemOnClick = function(properties) {
                 var selectedIndex = Number(this.getAttribute("data-dotindex"));
+                var newValue = 0;
                 if (selectedIndex + 1 === scope.ngModel) {
-                    scope.ngModel = selectedIndex;
+                    newValue = selectedIndex;
                 } else {
-                    scope.ngModel = selectedIndex + 1;
+                    newValue = selectedIndex + 1;
                 }
-                scope.$apply();
+                scope.$apply(() => {
+                    scope.ngModel = newValue;
+                });
             };
 
             for (var i = 0; i < 5; i++) {

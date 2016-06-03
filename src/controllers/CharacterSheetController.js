@@ -7,7 +7,7 @@ import CharacterService from '../services/CharacterService';
 export
 default class CharacterSheetController {
     /*@ngInject */
-    constructor(MartialArts, Merits, CharacterService) {
+    constructor($scope, MartialArts, Merits, CharacterService) {
         //=========================================================================
         // Initialization
         //=========================================================================
@@ -17,9 +17,11 @@ default class CharacterSheetController {
         this.spentBonusPoints = 0;
 
         this.character = CharacterService.createNew();
-        this.character.name = 'Damascus';
-        this.character.playerName = 'Luke';
-        this.character.caste = SolarCharacter.SolarCaste.ZENITH;
+        $scope.$watch(() => { 
+            return CharacterService.character; 
+        }, (newValue, oldValue) => {
+            this._characterChanged(newValue, oldValue);
+        }, true);
 
         this.casteList = [SolarCharacter.SolarCaste.DAWN, SolarCharacter.SolarCaste.ZENITH, SolarCharacter.SolarCaste.TWILIGHT, SolarCharacter.SolarCaste.NIGHT, SolarCharacter.SolarCaste.ECLIPSE];
 
@@ -60,6 +62,10 @@ default class CharacterSheetController {
 
     _fetchMerits(Merits) {
         this._fetchResource(Merits.query(), this.meritsList, this.merits);
+    }
+    
+    _characterChanged(newValue, oldValue) {
+        this.character = newValue;
     }
 
     finishCharacterCreation() {
