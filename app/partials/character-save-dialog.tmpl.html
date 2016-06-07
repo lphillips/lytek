@@ -1,0 +1,11 @@
+<md-dialog aria-label="Save Character" ng-cloak>
+    <md-input-container>
+        <label>File Name</label>
+        <input ng-model="ctrl.fileName" type="text" required>
+        <div ng-messages="ctrl.fileName">
+            <div ng-message="required">File name must be entered to save.</div>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="ctrl.saveCharacterClicked(ctrl.fileName)">Save Character</md-button>
+    </md-input-container>
+
+</md-dialog>

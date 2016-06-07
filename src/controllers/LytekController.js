@@ -1,5 +1,6 @@
 import angular from 'angular';
 import CharacterLoadDialogController from './CharacterLoadDialogController';
+import CharacterSaveDialogController from './CharacterSaveDialogController';
 
 export default class LytekController {
     /* @ngInject */
@@ -28,7 +29,14 @@ export default class LytekController {
         });
     }
     
-    saveCurrentCharacter() {
-        this.CharacterService.save();
+    showCharacterSaveDialog(event) {
+        this.$mdDialog.show({
+            controller: CharacterSaveDialogController,
+            controllerAs: 'ctrl',
+            templateUrl: 'partials/character-save-dialog.tmpl.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose:true
+        });
     }
 }
