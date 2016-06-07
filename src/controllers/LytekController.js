@@ -6,7 +6,7 @@ export default class LytekController {
     constructor($mdDialog, CharacterService) {
         this.$mdDialog = $mdDialog;
         this.tabs = ['Character', 'Charms', 'Sorcery', 'Martial Arts'];
-        this.characterService = CharacterService;
+        this.CharacterService = CharacterService;
     }
     
     tabView(index) {
@@ -17,10 +17,6 @@ export default class LytekController {
         }
     }
     
-//    loadCharacter() {
-//        this.characterService.load
-//    }
-    
     showCharacterLoadDialog(event) {
         this.$mdDialog.show({
             controller: CharacterLoadDialogController,
@@ -30,5 +26,9 @@ export default class LytekController {
             targetEvent: event,
             clickOutsideToClose: true
         });
+    }
+    
+    saveCurrentCharacter() {
+        this.CharacterService.save();
     }
 }

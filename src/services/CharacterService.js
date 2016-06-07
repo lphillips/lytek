@@ -16,7 +16,8 @@ export default class CharacterService {
     }
     
     save() {
-        
+        let characterJSON = JSON.stringify(this.character);
+        this.FileService.write(characterJSON, 'character.lyt', 'text/plain;charset=utf-8');
     }
     
     load(characterFile) {
