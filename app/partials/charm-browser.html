@@ -3,7 +3,7 @@
     <md-sidenav layout="column" class="md-sidenav-left" md-component-id="right" md-is-locked-open="true">
         <div layout="column" flex>
             <div layout="row">
-                <md-button ng-click="charmBrowserCtrl.openLeftMenu()">
+                <md-button ng-click="charmBrowserCtrl.openLeftMenu('solar-charm-menu')">
                     More Charms...
                 </md-button>
                 <md-button ng-click="charmBrowserCtrl.addCharm(charmBrowserCtrl.selectedCharm)">
@@ -25,7 +25,7 @@
     </md-sidenav>
 
     <!-- Charm List -->
-    <md-sidenav md-component-id="left" class="md-sidenav-left">
+    <md-sidenav md-component-id="solar-charm-menu" class="md-sidenav-left">
         <md-list>
             <md-list-item ng-repeat="abilityName in charmBrowserCtrl.character.AbilityEnum" ng-click="charmBrowserCtrl.loadCharmTree(abilityName)">
                 <span class="charm-tree-list-item">{{abilityName}}</span>

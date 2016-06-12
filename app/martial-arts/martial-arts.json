@@ -1,13 +1,13 @@
 [
-  { "id": "ma_snake_style", "name": "Snake Style"},
-  { "id": "ma_tiger_style", "name": "Tiger Style"},
-  { "id": "ma_shining_void_style", "name": "Single Point Shining Into the Void Style"},
-  { "id": "ma_white_reaver_style", "name": "White Reaper Style"},
-  { "id": "ma_ebon_shadow_style", "name": "Ebon Shadow Style"},
-  { "id": "ma_crane_style", "name": "Crane Style"},
-  { "id": "ma_silver_nightingale_style", "name": "Silver-Voiced Nightingale Style"},
-  { "id": "ma_righteous_devil_style", "name": "Righteous Devil Style"},
-  { "id": "ma_black_claw_style", "name": "Black Claw Style"},
-  { "id": "ma_dreaming_pearl_style", "name": "Dreaming Pearl Courtesan Style"},
-  { "id": "ma_steel_devil_style", "name": "Steel Devil Style"}
+  { "id": "snakestyle", "name": "Snake Style"},
+  { "id": "tigerstyle", "name": "Tiger Style"},
+  { "id": "singlepointshiningintothevoidstyle", "name": "Single Point Shining Into the Void Style"},
+  { "id": "whitereaperstyle", "name": "White Reaper Style"},
+  { "id": "ebonshadowstyle", "name": "Ebon Shadow Style"},
+  { "id": "cranestyle", "name": "Crane Style"},
+  { "id": "silvervoicednightingalestyle", "name": "Silver-Voiced Nightingale Style"},
+  { "id": "righteousdevilstyle", "name": "Righteous Devil Style"},
+  { "id": "blackclawstyle", "name": "Black Claw Style"},
+  { "id": "dreamingpearlcourtesanstyle", "name": "Dreaming Pearl Courtesan Style"},
+  { "id": "steeldevilstyle", "name": "Steel Devil Style"}
 ]

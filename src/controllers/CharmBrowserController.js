@@ -64,8 +64,8 @@ default class CharmBrowserController {
         }
     }
 
-    openLeftMenu() {
-        this.$mdSidenav('left').toggle();
+    openLeftMenu(menuName) {
+        this.$mdSidenav(menuName).toggle();
     }
     
     getResource(charmTreeName) {
