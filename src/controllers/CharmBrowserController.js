@@ -9,18 +9,15 @@ import 'vis/dist/vis.css';
 
 export
 default class CharmBrowserController {
-    constructor($scope, $document, $mdSidenav, Charms, CharacterService) {
+    constructor($scope, $document, $mdSidenav, CharacterService) {
         /* @ngInject */
         this.$scope = $scope;
         this.charmNetworkName = 'charmTreeNetwork';
         this.$mdSidenav = $mdSidenav;
-        this.CharmsService = Charms;
         this.charmTreeNetwork = null;
 
         this.character = CharacterService.character;
         this.selectedCharm = null;
-
-        this.loadCharmTree('awareness');
 
         this.network_options = {
             autoResize: true,
@@ -70,15 +67,17 @@ default class CharmBrowserController {
     openLeftMenu() {
         this.$mdSidenav('left').toggle();
     }
+    
+    getResource(charmTreeName) {
+        return null;
+    }
 
     loadCharmTree(charmTreeName) {
         // Clear the previously loaded charms.
         this.charms = {};
 
         // Begin the load of the new charm trees.
-        let charmsResource = this.CharmsService.query({
-            ability: charmTreeName
-        });
+        let charmsResource = this.getResource(charmTreeName);
 
         // When the list of charm is received, build the graph info.
         charmsResource.$promise.then((result) => {

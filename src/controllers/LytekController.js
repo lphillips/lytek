@@ -14,6 +14,7 @@ export default class LytekController {
         switch(index) {
             case 0: return 'partials/char-sheet.html';
             case 1: return 'partials/charm-browser.html';
+            case 3: return 'partials/martial-arts-browser.html';
             default: return 'partials/char-sheet.html';
         }
     }

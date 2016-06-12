@@ -15,6 +15,12 @@ lytekServices.factory('Charms', ['$resource',
     }
 ]);
 
+lytekServices.factory('MartialArtsCharms', ['$resource',
+    function($resource) {
+        return $resource('martial-arts/:martialartname.json', {}, {});
+    }
+]);
+
 lytekServices.factory('MartialArts', ['$resource',
     function($resource) {
         return $resource('martial-arts/martial-arts.json', {}, {});
