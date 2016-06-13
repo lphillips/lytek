@@ -1,5 +1,6 @@
 import 'angular-material/angular-material.css';
-import './css/lytek.css';
+import 'assets/css/lytek.css';
+import 'file?name=index.html!approot/index.html';
 
 /* App Module */
 import ngMaterial from 'angular-material';

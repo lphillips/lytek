@@ -1,8 +1,8 @@
 import {
     ExaltedCharacter
 }
-from '../models.js';
-import CharmShape from '../charmshape';
+from 'shared/character/models';
+import CharmShape from 'shared/charm-graph/charmshape';
 import angular from 'angular';
 import vis from 'vis';
 import 'vis/dist/vis.css';

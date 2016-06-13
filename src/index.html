@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Lytek - Exalted Character Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div ng-controller="LytekCtrl as lytekCtrl" layout-fill>
+        <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+                <md-menu>
+                    <md-button class="md-icon-button" aria-label="Character" ng-click="$mdOpenMenu()">
+                        <div class="material-icons">menu</div>
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button href="#">
+                                New
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="lytekCtrl.showCharacterLoadDialog($event)">
+                                Open
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="lytekCtrl.showCharacterSaveDialog($event)">
+                                Save
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>
+                                Export to PDF
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+                <h2><span>Lytek</span></h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <md-tabs flex layout-fill>
+            <md-tab flex ng-repeat="tab in lytekCtrl.tabs" label="{{tab}}">
+                <md-tab-content flex layout-fill>
+                    <ng-include src="lytekCtrl.tabView($index)"></ng-include>
+                </md-tab-content>
+            </md-tab>
+        </md-tabs>
+
+        <!--
+    <md-menu-bar>
+        <md-menu>
+            <button ng-click="$mdOpenMenu()">
+                Character
+            </button>
+            <md-menu-content>
+                <md-menu-item>
+                    <md-button href="#">
+                        New
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        Open
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        Save
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        Export to PDF
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <md-button href="#/lytek/charms/awareness">
+            Charm Browser
+        </md-button>
+        <button>
+            Sorcery Browser
+        </button>
+        <button>
+            Martial Arts Browser
+        </button>
+    </md-menu-bar>
+-->
+    </div>
+
+
+    <script src="bundle.js"></script>
+</body>
+
+</html>

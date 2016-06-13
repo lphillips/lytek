@@ -1,6 +1,6 @@
 import angular from 'angular';
-import CharacterLoadDialogController from './CharacterLoadDialogController';
-import CharacterSaveDialogController from './CharacterSaveDialogController';
+import CharacterLoadDialogController from 'shared/file-io/CharacterLoadDialogController';
+import CharacterSaveDialogController from 'shared/file-io/CharacterSaveDialogController';
 
 export default class LytekController {
     /* @ngInject */

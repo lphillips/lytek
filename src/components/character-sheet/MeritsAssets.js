@@ -1,0 +1,1 @@
+import 'file?name=merits/merits.json!assets/merits/merits.json';

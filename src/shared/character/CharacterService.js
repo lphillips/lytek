@@ -1,7 +1,7 @@
 import {
     ExaltedCharacter, SolarCharacter
 }
-from '../models';
+from 'shared/character/models';
 import angular from 'angular';
 
 const kSaveFileExtension = 'lyt';

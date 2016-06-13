@@ -1,0 +1,452 @@
+[
+    {
+        "id": "merit_allies",
+        "name": "Allies", 
+        "type": "Story", 
+        "availableDots": [1, 3, 5],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_ambidextrous",
+        "name": "Ambidextrous",
+        "type": "Innate",
+        "availableDots": [1, 2],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_artifact",
+        "name": "Artifact",
+        "type": "Story",
+        "availableDots": [2, 3, 4, 5],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_backing",
+        "name": "Backing",
+        "type": "Story",
+        "availableDots": [2, 3, 4],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_boundless_endurance",
+        "name": "Boundless Endurance",
+        "type": "Purchased",
+        "availableDots": [2],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:STAMINA:3 | ABILITY:RESISTANCE:3",
+        "description": ""
+    },
+    {
+        "id": "merit_command",
+        "name": "Command",
+        "type": "Story",
+        "availableDots": [2, 3, 4, 5],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_contacts",
+        "name": "Contacts",
+        "type": "Story",
+        "availableDots": [1, 3, 5],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_cult",
+        "name": "Cult",
+        "type": "Story",
+        "availableDots": [1, 2, 3, 4, 5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_danger_sense",
+        "name": "Danger Sense",
+        "type": "Innate",
+        "availableDots": [3],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:PERCEPTION:3 | ABILITY:AWARENESS:3",
+        "description": ""
+    },
+    {
+        "id": "merit_demesne",
+        "name": "Demesne",
+        "type": "Story",
+        "availableDots": [2, 4],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_direction_sense",
+        "name": "Direction Sense",
+        "type": "Innate",
+        "availableDots": [1],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_eidetic_memory",
+        "name": "Eidetic Memory",
+        "type": "Innate",
+        "availableDots": [2],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_familiar",
+        "name": "Familiar",
+        "type": "Story",
+        "availableDots":[1, 2, 3],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_fast_reflexes",
+        "name": "Fast Reflexes",
+        "type": "Purchased",
+        "availableDots": [3],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:WITS:3",
+        "description": ""
+    },
+    {
+        "id": "merit_fleet_of_foot",
+        "name": "Fleet of Foot",
+        "type": "Purchased",
+        "availableDots": [4],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIUBUTE:DEXTERITY:3",
+        "description": ""
+    },
+    {
+        "id": "merit_followers",
+        "name": "Followers",
+        "type": "Story",
+        "availableDots": [1, 2, 3],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_giant",
+        "name": "Giant",
+        "type": "Innate",
+        "availableDots": [4],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:STAMINA:3",
+        "description": ""
+    },
+    {
+        "id": "merit_hearthstone",
+        "name": "Hearthstone",
+        "type": "Story",
+        "availableDots": [2, 4],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_hideous",
+        "name": "Hideous",
+        "type": "Innate",
+        "availableDots": [0],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_influence",
+        "name": "Influence",
+        "type": "Story",
+        "availableDots": [1, 2, 3, 4, 5],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_iron_stomach",
+        "name": "Iron Stomach",
+        "type": "Purchased",
+        "availableDots": [1],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:STAMINA:3 | ABILITY:RESISTANCE:3",
+        "description": ""
+    },
+    {
+        "id": "merit_language",
+        "name": "Language",
+        "type": "Purchased",
+        "availableDots": [1],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_manse",
+        "name": "Manse",
+        "type": "Story",
+        "availableDots": [3, 5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_mentor",
+        "name": "Mentor",
+        "type": "Story",
+        "availableDots": [1, 2, 3],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_martial_artist",
+        "name": "Martial Artist",
+        "type": "Purchased",
+        "availableDots": [4],
+        "purchaseCount": 1,
+        "prerequisites": "ABILITY:BRAWL:1",
+        "description": ""
+    },
+    {
+        "id": "merit_mighty_thew",
+        "name": "Mighty Thew",
+        "type": "Purchased",
+        "availableDots": [1, 2, 3],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:STRENGTH:3",
+        "description": ""
+    },
+    {
+        "id": "merit_natural_immunity",
+        "name": "Natural Immunity",
+        "type": "Innate",
+        "availableDots": [2],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:STAMINA:3",
+        "description": ""
+    },
+    {
+        "id": "merit_pain_tolerance",
+        "name": "Pain Tolerance",
+        "type": "Purchased",
+        "availableDots": [4],
+        "purchaseCount": 1,
+        "prerequisites": "ABILITY:RESISTANCE:4",
+        "description": ""
+    },
+    {
+        "id": "merit_quick_draw",
+        "name": "Quick Draw",
+        "type": "Purchased",
+        "availableDots": [1, 4],
+        "purchaseCount": 1,
+        "prerequisites": "ABILITY:ARCHERY:3 | ABILITY:BRAWL:3 | ABILITY:MELEE:3 | ABILITY:MARTIAL_ARTS:3 | ABILITY:THROWN:3",
+        "description": ""
+    },
+    {
+        "id": "merit_retainers",
+        "name": "Retainers",
+        "type": "Story",
+        "availableDots": [2, 4],
+        "purchaseCount": -1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_resources",
+        "name": "Resources",
+        "type": "Story",
+        "availableDots": [1, 2, 3, 4, 5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_selective_conception",
+        "name": "Selective Conception",
+        "type": "Innate",
+        "availableDots": [1],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_strong_lungs",
+        "name": "Strong Lungs",
+        "type": "Purchased",
+        "availableDots": [1],
+        "purchaseCount": 1,
+        "prerequisites": "ABILITY:ATHLETICS:1",
+        "description": ""
+    },
+    {
+        "id": "merit_tempered_by_the_elements",
+        "name": "Tempered by the Elements",
+        "type": "Purchased",
+        "availableDots": [2],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_toxin_resistance",
+        "name": "Toxin Resistance",
+        "type": "Purchased",
+        "availableDots": [3],
+        "purchaseCount": 1,
+        "prerequisites": "ATTRIBUTE:STAMINA:3 | ABILITY:RESISTANCE:3",
+        "description": ""
+    },
+    {
+        "id": "merit_chameleon",
+        "name": "Chameleon",
+        "type": "Innate",
+        "availableDots": [3],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_claws_fangs_horns_hooves",
+        "name": "Claws/Fangs/Horns/Hooves",
+        "type": "Innate",
+        "availableDots": [1, 4],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_enhanced_sense",
+        "name": "Enhanced Sense",
+        "type": "Innate",
+        "availableDots": [3],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_exalted_healing",
+        "name": "Exalted Healing",
+        "type": "Innate",
+        "availableDots": [5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_extra_limbs",
+        "name": "Extra Limbs",
+        "type": "Innate",
+        "availableDots": [3],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_gills",
+        "name": "Gills",
+        "type": "Innate",
+        "availableDots": [0, 3],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_poisoned_body",
+        "name": "Poisoned Body",
+        "type": "Innate",
+        "availableDots": [1, 2, 5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_quills",
+        "name": "Quills",
+        "type": "Innate",
+        "availableDots": [5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_subtlety",
+        "name": "Subtlety",
+        "type": "Innate",
+        "availableDots": [2],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_tail",
+        "name": "Tail",
+        "type": "Innate",
+        "availableDots": [1, 2],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_thaumaturgist",
+        "name": "Thaumaturgist",
+        "type": "Innate",
+        "availableDots": [4],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_unusual_hide",
+        "name": "Unusual Hide",
+        "type": "Innate",
+        "availableDots": [1, 2, 3, 4, 5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_venemous",
+        "name": "Venemous",
+        "type": "Innate",
+        "availableDots": [3, 4],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_wall_walking",
+        "name": "Wall Walking",
+        "type": "Innate",
+        "availableDots": [4],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    },
+    {
+        "id": "merit_wings",
+        "name": "Wings",
+        "type": "Innate",
+        "availableDots": [3, 5],
+        "purchaseCount": 1,
+        "prerequisites": "",
+        "description": ""
+    }
+]

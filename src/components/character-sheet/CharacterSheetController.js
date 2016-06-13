@@ -1,8 +1,10 @@
 import {
     SolarCharacter, ExaltedCharacter, AbilityRank
 }
-from '../models';
-import CharacterService from '../services/CharacterService';
+from 'shared/character/models';
+import CharacterService from 'shared/character/CharacterService';
+import 'file?name=partials/char-sheet.html!components/character-sheet/char-sheet.html';
+import './MeritsAssets';
 
 export
 default class CharacterSheetController {

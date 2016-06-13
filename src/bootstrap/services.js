@@ -1,7 +1,9 @@
 import angular from 'angular';
-import CharacterService from './services/CharacterService';
-import FileService from './services/FileService';
 import 'angular-resource';
+import CharacterService from 'shared/character/CharacterService';
+import FileService from 'shared/file-io/FileService';
+
+import 'assets/martial-arts/martial-arts.json';
 
 /* Services */
 
@@ -11,7 +13,7 @@ default lytekServices;
 
 lytekServices.factory('Charms', ['$resource',
     function($resource) {
-        return $resource('charms/:ability.json', {}, {});
+        return $resource('solar-charms/:ability.json', {}, {});
     }
 ]);
 

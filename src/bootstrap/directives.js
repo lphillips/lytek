@@ -1,5 +1,6 @@
 import vis from 'vis';
-
+import dotImage from 'assets/img/dot.png';
+import emptyDotImage from 'assets/img/dot_empty.png';
 
 var lytekDirectives = angular.module('lytekDirectives', []);
 export
@@ -89,15 +90,14 @@ lytekDirectives.directive("dots", function() {
             // dotVal - The value of last dot to fill, starting from 1.
             //=========================================================
             var redraw = function redraw(dotVal) {
-//                console.log('redraw with dotVal ' + dotVal);
                 var childNodes = element[0].childNodes;
                 for (var index = 0; index < childNodes.length; index++) {
                     var dotElem = childNodes[index];
 
                     if (index < dotVal) {
-                        dotElem.setAttribute("src", "img/dot.png");
+                        dotElem.setAttribute("src", dotImage);
                     } else {
-                        dotElem.setAttribute("src", "img/dot_empty.png");
+                        dotElem.setAttribute("src", emptyDotImage);
                     }
                 }
             };
@@ -108,7 +108,6 @@ lytekDirectives.directive("dots", function() {
             // it to legal values and redraw when it changes.
             //=========================================================
             scope.$watch('ngModel', function(newValue, oldValue) {
-//                console.log('new val: ' + newValue + '; old val: ' + oldValue);
                 if (typeof newValue != 'undefined') {
                     var legalValue = closestLegalValue(scope.ngModel, scope.allowedValues);
                     if (legalValue == scope.ngModel) {
@@ -140,9 +139,9 @@ lytekDirectives.directive("dots", function() {
                 // of each image element in the widget when it is clicked.
                 imgElem.setAttribute("data-dotindex", i);
                 if (i < scope.ngModel) {
-                    imgElem.setAttribute("src", "img/dot.png");
+                    imgElem.setAttribute("src", dotImage);
                 } else {
-                    imgElem.setAttribute("src", "img/dot_empty.png");
+                    imgElem.setAttribute("src", emptyDotImage);
                 }
 
                 imgElem.setAttribute("width", "12");

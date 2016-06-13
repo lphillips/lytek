@@ -9,14 +9,18 @@ var webpack = require('webpack');
 // define Webpack configuration object to be exported
 var config = {
     context: __dirname + '/src',
-    entry: './core/bootstrap.js',
+    entry: './bootstrap/bootstrap.js',
     output: {
         path: __dirname + '/app',
         filename: 'bundle.js'
     },
     resolve: {
         alias: {
-            'bower': __dirname + '/app/bower_components'
+            'bower': __dirname + '/app/bower_components',
+            'approot': __dirname + '/src',
+            'assets': __dirname + '/src/assets',
+            'components': __dirname + '/src/components',
+            'shared': __dirname + '/src/shared',
         }
     },
     module: {
@@ -41,10 +45,7 @@ var config = {
         }]
     },
     plugins: [
-        new cleanPlugin(['dist']),
-//        new ngAnnotatePlugin({
-//            add: true
-//        }),
+        new cleanPlugin(['app']),
         new ExtractTextPlugin('styles.css'),
         //        new webpack.optimize.UglifyJsPlugin({
         //            compress: {

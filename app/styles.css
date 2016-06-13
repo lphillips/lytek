@@ -23389,6 +23389,16 @@ md-tooltip {
 .dot {
     margin-left: 2px;
     margin-right: 2px;
+}
+md-tabs.stretch-height md-tab-content>div{
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+}
+.charm-tree-list-item {
+    font-family: "Sorts Mill Goudy";
+    font-weight: normal;
 }.vis .overlay {
   position: absolute;
   top: 0;
