@@ -1,0 +1,5 @@
+[
+    { "id": "terrestrialcirclespells", "name": "Terrestrial Circle Spells"},
+    { "id": "celestialcirclespells", "name": "Celestial Circle Spells"},
+    { "id": "solarcirclespells", "name": "Solar Circle Spells"}
+]

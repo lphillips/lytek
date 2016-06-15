@@ -9,8 +9,8 @@ import 'vis/dist/vis.css';
 
 export
 default class CharmBrowserController {
+    /* @ngInject */
     constructor($scope, $document, $mdSidenav, CharacterService) {
-        /* @ngInject */
         this.$scope = $scope;
         this.charmNetworkName = 'charmTreeNetwork';
         this.$mdSidenav = $mdSidenav;
@@ -67,7 +67,7 @@ default class CharmBrowserController {
     openLeftMenu(menuName) {
         this.$mdSidenav(menuName).toggle();
     }
-    
+
     getResource(charmTreeName) {
         return null;
     }
@@ -141,8 +141,10 @@ default class CharmBrowserController {
 
     maxPrereqLevel(nodeLevels, charm) {
         let maxLevel = 0;
-        for (let idx = 0; idx < charm.prereqs.length; idx++) {
-            maxLevel = Math.max(maxLevel, nodeLevels[charm.prereqs[idx]]);
+        if (charm.prereqs) {
+            for (let idx = 0; idx < charm.prereqs.length; idx++) {
+                maxLevel = Math.max(maxLevel, nodeLevels[charm.prereqs[idx]]);
+            }
         }
         return maxLevel;
     }

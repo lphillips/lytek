@@ -35,6 +35,18 @@ lytekServices.factory('Merits', ['$resource',
     }
 ]);
 
+lytekServices.factory('Sorcery', ['$resource', 
+     function($resource) {
+         return $resource('sorcery/sorcery.json');
+     }
+ ]);
+
+lytekServices.factory('SorcerySpells', ['$resource', 
+    function($resource) {
+        return $resource('sorcery/:circlename.json', {}, {});
+    }
+]);
+
 let characterServiceArray = CharacterService.$inject;
 characterServiceArray.push(CharacterService);
 let fileServiceArray = FileService.$inject;

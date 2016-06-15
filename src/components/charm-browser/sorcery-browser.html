@@ -1,0 +1,37 @@
+<div layout-fill layout="row" ng-controller="SorceryBrowserCtrl as charmBrowserCtrl">
+    <!-- Charm Info Panel -->
+    <md-sidenav layout="column" class="md-sidenav-left" md-component-id="right" md-is-locked-open="true">
+        <div layout="column" flex>
+            <div layout="row">
+                <md-button ng-click="charmBrowserCtrl.openLeftMenu('sorcery-menu')">
+                    More Martial Arts...
+                </md-button>
+                <md-button ng-click="charmBrowserCtrl.addSorcery(charmBrowserCtrl.selectedCharm)">
+                    Add Charm
+                </md-button>
+            </div>
+
+            <span>Name: {{charmBrowserCtrl.selectedCharm.name}}</span>
+            <span>Cost: {{charmBrowserCtrl.selectedCharm.cost}}</span>
+            <span>Keywords: {{charmBrowserCtrl.selectedCharm.keywords}}</span>
+            <span>Duration: {{charmBrowserCtrl.selectedCharm.duration}}</span>
+        </div>
+        <md-divider></md-divider>
+        <div layout="column" flex>
+            <span ng-repeat="(charmId, charm) in charmBrowserCtrl.character.charms">{{charm.name}}</span>
+        </div>
+    </md-sidenav>
+
+    <!-- Charm List -->
+    <md-sidenav md-component-id="sorcery-menu" class="md-sidenav-left">
+        <md-list>
+            <md-list-item ng-repeat="sorcery in charmBrowserCtrl.sorcery" ng-click="charmBrowserCtrl.loadCharmTree(sorcery.id)">
+                <span class="charm-tree-list-item">{{sorcery.name}}</span>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+
+    <!-- Charm Graph -->
+    <visnetwork layout-fill class="charmgraph" options="charmBrowserCtrl.network_options" ng-model="charmBrowserCtrl.charmTreeNetwork" on-select-node="charmBrowserCtrl.onSelectNode(selectParams)"></visnetwork>
+
+</div>
