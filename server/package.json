@@ -1,0 +1,17 @@
+{
+  "name": "lytek-server",
+  "version": "1.0.0",
+  "description": "PDF form filler for Exalted character sheets",
+  "main": "lytek-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luke Phillips",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.14.0",
+    "pdffiller": "^0.3.0",
+    "temp": "^0.8.3"
+  }
+}
