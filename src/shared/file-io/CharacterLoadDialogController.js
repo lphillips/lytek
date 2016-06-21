@@ -1,3 +1,5 @@
+import 'file?name=partials/character-load-dialog.tmpl.html!./character-load-dialog.tmpl.html';
+
 export default class CharacterLoadDialogController {
     /* @ngInject */
     constructor($mdDialog, CharacterService) {

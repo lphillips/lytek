@@ -1,3 +1,5 @@
+import 'file?name=partials/character-save-dialog.tmpl.html!./character-save-dialog.tmpl.html';
+
 export
 default class CharacterSaveDialogController {
     /* @ngInject */
