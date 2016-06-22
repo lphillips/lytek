@@ -51,7 +51,7 @@ lytekDirectives.directive('dots', function() {
         scope: {
             ngModel: '=',
             allowedValues: '=',
-            count: '='
+            count: '@'
         },
         link: function link(scope, element, attrs) {
             // The allowedValues array should be sorted into ascending order, if it is present.
@@ -59,7 +59,9 @@ lytekDirectives.directive('dots', function() {
                 scope.allowedValues.sort();
             }
             
-            if (scope.count == 'undefined') {
+            if (typeof scope.count === 'undefined') {
+                // If no dot count was provided, we assume five dots, since
+                // that's how most things work in Exalted.
                 scope.count = 5;
             }
 
