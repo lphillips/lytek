@@ -9,6 +9,8 @@ export class ExaltedCharacter {
         this.concept = '';
         this.essence = 1;
         this.willpower = 1;
+        this.limitBreak = '';
+        this.limitTrigger = '';
 
         this.AttributeEnum = {
             STRENGTH: 'Strength',
