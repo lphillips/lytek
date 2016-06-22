@@ -8,6 +8,7 @@ export class ExaltedCharacter {
         this.playerName = '';
         this.concept = '';
         this.essence = 1;
+        this.willpower = 1;
 
         this.AttributeEnum = {
             STRENGTH: 'Strength',

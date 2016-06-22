@@ -42,20 +42,25 @@ lytekDirectives.directive('fileBind', function() {
     };
 });
 
-lytekDirectives.directive("dots", function() {
+lytekDirectives.directive('dots', function() {
     return {
-        restrict: "E",
-        require: "^ngModel",
-        template: "<div></div>",
+        restrict: 'E',
+        require: '^ngModel',
+        template: '<div></div>',
         replace: true,
         scope: {
-            ngModel: "=",
-            allowedValues: "="
+            ngModel: '=',
+            allowedValues: '=',
+            count: '='
         },
         link: function link(scope, element, attrs) {
             // The allowedValues array should be sorted into ascending order, if it is present.
             if (scope.allowedValues) {
                 scope.allowedValues.sort();
+            }
+            
+            if (scope.count == 'undefined') {
+                scope.count = 5;
             }
 
             //=========================================================
@@ -95,9 +100,9 @@ lytekDirectives.directive("dots", function() {
                     var dotElem = childNodes[index];
 
                     if (index < dotVal) {
-                        dotElem.setAttribute("src", dotImage);
+                        dotElem.setAttribute('src', dotImage);
                     } else {
-                        dotElem.setAttribute("src", emptyDotImage);
+                        dotElem.setAttribute('src', emptyDotImage);
                     }
                 }
             };
@@ -120,7 +125,7 @@ lytekDirectives.directive("dots", function() {
 
             // Create the img element nodes for drawing the widget.
             let imgElemOnClick = function(properties) {
-                var selectedIndex = Number(this.getAttribute("data-dotindex"));
+                var selectedIndex = Number(this.getAttribute('data-dotindex'));
                 var newValue = 0;
                 if (selectedIndex + 1 === scope.ngModel) {
                     newValue = selectedIndex;
@@ -132,20 +137,20 @@ lytekDirectives.directive("dots", function() {
                 });
             };
 
-            for (var i = 0; i < 5; i++) {
-                var imgElem = document.createElement("img");
+            for (var i = 0; i < scope.count; i++) {
+                var imgElem = document.createElement('img');
 
                 // The data-dotindex attribute is used to track the position
                 // of each image element in the widget when it is clicked.
-                imgElem.setAttribute("data-dotindex", i);
+                imgElem.setAttribute('data-dotindex', i);
                 if (i < scope.ngModel) {
-                    imgElem.setAttribute("src", dotImage);
+                    imgElem.setAttribute('src', dotImage);
                 } else {
-                    imgElem.setAttribute("src", emptyDotImage);
+                    imgElem.setAttribute('src', emptyDotImage);
                 }
 
-                imgElem.setAttribute("width", "12");
-                imgElem.setAttribute("height", "12");
+                imgElem.setAttribute('width', '12');
+                imgElem.setAttribute('height', '12');
 
                 //=========================================================
                 // onClick(properties)
