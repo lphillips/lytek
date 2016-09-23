@@ -1,5 +1,5 @@
 import {
-    SolarCharacter, ExaltedCharacter, AbilityRank
+    SolarCharacter, ExaltedCharacter, AbilityRank, Attribute, Ability
 }
 from 'shared/character/models';
 import CharacterService from 'shared/character/CharacterService';
@@ -17,6 +17,8 @@ default class CharacterSheetController {
         this.newCharacter = true;
         this.totalBonusPoints = 15;
         this.spentBonusPoints = 0;
+        
+//        this.attributeChunks = [ [Character.]]
 
         this.character = CharacterService.createNew();
         $scope.$watch(() => { 
@@ -24,6 +26,24 @@ default class CharacterSheetController {
         }, (newValue, oldValue) => {
             this._characterChanged(newValue, oldValue);
         }, true);
+        
+        this.attributeChunks = [
+            [
+                this.character.attributeRanks[Attribute.STRENGTH],
+                this.character.attributeRanks[Attribute.DEXTERITY],
+                this.character.attributeRanks[Attribute.STAMINA]
+            ],
+            [
+                this.character.attributeRanks[Attribute.CHARISMA],
+                this.character.attributeRanks[Attribute.MANIPULATION],
+                this.character.attributeRanks[Attribute.APPEARANCE]
+            ],
+            [
+                this.character.attributeRanks[Attribute.PERCEPTION],
+                this.character.attributeRanks[Attribute.INTELLIGENCE],
+                this.character.attributeRanks[Attribute.WITS]
+            ]
+        ];
 
         this.casteList = [SolarCharacter.SolarCaste.DAWN, SolarCharacter.SolarCaste.ZENITH, SolarCharacter.SolarCaste.TWILIGHT, SolarCharacter.SolarCaste.NIGHT, SolarCharacter.SolarCaste.ECLIPSE];
 
@@ -80,9 +100,9 @@ default class CharacterSheetController {
         return this.newCharacter;
     }
 
-    addMerit(newMeritId) {
-        let merit = this.merits[newMeritId];
-        this.character.meritRanks[newMeritId] = new AbilityRank(newMeritId, merit.availableDots[0]);
+    addMerit(newMerit) {
+        console.log('newMerit = ' + newMerit);
+        this.character.meritRanks[newMerit.id] = new AbilityRank(newMerit.id, newMerit.availableDots[0]);
     }
 
     removeMerit(existingMerit) {
@@ -120,16 +140,16 @@ default class CharacterSheetController {
         }
     }
 
-    addMartialArt(newMartialArt) {
+    addMartialArt(newMartialArtId) {
         // Add the martial art to the list with a rank of 0 if it does not
         // already exist.
-        if (!this.character.martialArtsRanks[newMartialArt]) {
-            this.character.martialArtsRanks[newMartialArt] = new AbilityRank(newMartialArt, 0);
+        if (!this.character.martialArtsRanks[newMartialArtId]) {
+            this.character.martialArtsRanks[newMartialArtId] = new AbilityRank(newMartialArtId, 0);
         }
     }
 
-    removeMartialArt(existingMartialArt) {
-        delete this.character.martialArtsRanks[existingMartialArt];
+    removeMartialArt(existingMartialArtId) {
+        delete this.character.martialArtsRanks[existingMartialArtId];
     }
 
     addCraft(newCraft) {
@@ -140,5 +160,13 @@ default class CharacterSheetController {
 
     removeCraft(existingCraft) {
         delete this.character.craftsRanks[existingCraft];
+    }
+    
+    getAttributeLabel(attribute) {
+        return attribute.localizeKey.toLocaleString();
+    }
+    
+    getAbilityLabel(ability) {
+        return ability.localizeKey.toLocaleString();
     }
 }

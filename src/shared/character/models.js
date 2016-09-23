@@ -1,3 +1,127 @@
+import {
+    Enum
+}
+from 'enumify';
+
+//=============================================================================
+// ENUM: Attribute
+//=============================================================================
+export class Attribute extends Enum {}
+Attribute.initEnum({
+    STRENGTH: {
+        localizeKey: '%strength'
+    },
+    DEXTERITY: {
+        localizeKey: '%dexterity'
+    },
+    STAMINA: {
+        localizeKey: '%stamina'
+    },
+    CHARISMA: {
+        localizeKey: '%charisma'
+    },
+    MANIPULATION: {
+        localizeKey: '%manipulation'
+    },
+    APPEARANCE: {
+        localizeKey: '%appearance'
+    },
+    INTELLIGENCE: {
+        localizeKey: '%intelligence'
+    },
+    WITS: {
+        localizeKey: '%wits'
+    },
+    PERCEPTION: {
+        localizeKey: '%perception'
+    }
+});
+
+//=============================================================================
+// ENUM: Ability
+//=============================================================================
+export class Ability extends Enum {}
+Ability.initEnum({
+    ARCHERY: {
+        localizeKey: '%archery'
+    },
+    ATHLETICS: {
+        localizeKey: '%athletics'
+    },
+    AWARENESS: {
+        localizeKey: '%awareness'
+    },
+    BRAWL: {
+        localizeKey: '%brawl'
+    },
+    BUREAUCRACY: {
+        localizeKey: '%bureaucracy'
+    },
+    CRAFT: {
+        localizeKey: '%craft'
+    },
+    DODGE: {
+        localizeKey: '%dodge'
+    },
+    INTEGRITY: {
+        localizeKey: '%integrity'
+    },
+    INVESTIGATION: {
+        localizeKey: '%investigation'
+    },
+    LARCENY: {
+        localizeKey: '%larceny'
+    },
+    LINGUISTICS: {
+        localizeKey: '%linguistics'
+    },
+    LORE: {
+        localizeKey: '%lore'
+    },
+    MARTIAL_ARTS: {
+        localizeKey: '%martial_arts'
+    },
+    MEDICINE: {
+        localizeKey: '%medicine'
+    },
+    MELEE: {
+        localizeKey: '%melee'
+    },
+    OCCULT: {
+        localizeKey: '%occult'
+    },
+    PERFORMANCE: {
+        localizeKey: '%performance'
+    },
+    PRESENCE: {
+        localizeKey: '%presence'
+    },
+    RESISTANCE: {
+        localizeKey: '%resistance'
+    },
+    RIDE: {
+        localizeKey: '%ride'
+    },
+    SAIL: {
+        localizeKey: '%sail'
+    },
+    SOCIALIZE: {
+        localizeKey: '%socialize'
+    },
+    STEALTH: {
+        localizeKey: '%stealth'
+    },
+    SURVIVAL: {
+        localizeKey: '%survival'
+    },
+    THROWN: {
+        localizeKey: '%thrown'
+    },
+    WAR: {
+        localizeKey: '%war'
+    }
+});
+
 //=============================================================================
 // CLASS: ExaltedCharacter
 //=============================================================================
@@ -12,62 +136,21 @@ export class ExaltedCharacter {
         this.limitBreak = '';
         this.limitTrigger = '';
 
-        this.AttributeEnum = {
-            STRENGTH: 'Strength',
-            DEXTERITY: 'Dexterity',
-            STAMINA: 'Stamina',
-            CHARISMA: 'Charisma',
-            MANIPULATION: 'Manipulation',
-            APPEARANCE: 'Appearance',
-            INTELLIGENCE: 'Intellligence',
-            WITS: 'Wits',
-            PERCEPTION: 'Perception'
-        };
-
         // Attribute Ranks
         this.attributeRanks = {};
-        for (var attribute in this.AttributeEnum) {
+        for (var attribute of Attribute) {
             let newAttributeRank = new AbilityRank(attribute, 1);
             newAttributeRank.minRank = 1;
             this.attributeRanks[attribute] = newAttributeRank;
         }
 
-        this.AbilityEnum = {
-            ARCHERY: 'Archery',
-            ATHLETICS: 'Athletics',
-            AWARENESS: 'Awareness',
-            BRAWL: 'Brawl',
-            BUREAUCRACY: 'Bureaucracy',
-            CRAFT: 'Craft',
-            DODGE: 'Dodge',
-            INTEGRITY: 'Integrity',
-            INVESTIGATION: 'Investigation',
-            LARCENY: 'Larceny',
-            LINGUISTICS: 'Linguistics',
-            LORE: 'Lore',
-            MARTIAL_ARTS: 'Martial Arts',
-            MEDICINE: 'Medicine',
-            MELEE: 'Melee',
-            OCCULT: 'Occult',
-            PERFORMANCE: 'Performance',
-            PRESENCE: 'Presence',
-            RESISTANCE: 'Resistance',
-            RIDE: 'Ride',
-            SAIL: 'Sail',
-            SOCIALIZE: 'Socialize',
-            STEALTH: 'Stealth',
-            SURVIVAL: 'Survival',
-            THROWN: 'Thrown',
-            WAR: 'War'
-        };
-
         // Ability ranks
         this.abilityRanks = [];
-        for (var ability in this.AbilityEnum) {
+        for (var ability of Ability) {
             let newAbilityRank = null;
-            if (ability === 'CRAFT') {
+            if (ability === Ability.CRAFT) {
                 newAbilityRank = new AbilityGroupRank(ability, this.craftsRanks);
-            } else if (ability === 'MARTIAL_ARTS') {
+            } else if (ability === Ability.MARTIAL_ARTS) {
                 newAbilityRank = new AbilityGroupRank(ability, this.martialArtsRanks);
             } else {
                 newAbilityRank = new AbilityRank(ability, 0);
@@ -79,7 +162,7 @@ export class ExaltedCharacter {
         this.meritRanks = {};
         this.martialArtsRanks = {};
         this.craftsRanks = {};
-        
+
         // Charms
         this.charms = {};
 
@@ -119,6 +202,7 @@ export class SolarCharacter extends ExaltedCharacter {
         this.totalSolarXP = 0;
     }
 }
+
 SolarCharacter.SolarCaste = {
     DAWN: 'Dawn',
     ZENITH: 'Zenith',
@@ -211,7 +295,7 @@ export class AbilityPrereq extends Prereq {
     constructor(prereqKey, prereqValue) {
         super(prereqKey, prereqValue);
     }
-    
+
     isSatisfied(character) {
         var abilityRank = character.getAbilityRank(this.key);
         return abilityRank.rank >= this.value;
@@ -226,7 +310,7 @@ export class EssencePrereq extends Prereq {
     constructor(prereqValue) {
         super(null, prereqValue);
     }
-    
+
     isSatisfied(character) {
         return character.essence >= this.value;
     }

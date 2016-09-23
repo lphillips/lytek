@@ -44,9 +44,13 @@
     width: 100%;
     z-index: 2;
 }
+.dots {
+    float: right;
+}
 .dot {
     margin-left: 2px;
     margin-right: 2px;
+    float: right;
 }
 md-tabs.stretch-height md-tab-content>div{
     margin: 0;
@@ -57,4 +61,8 @@ md-tabs.stretch-height md-tab-content>div{
 .charm-tree-list-item {
     font-family: "Sorts Mill Goudy";
     font-weight: normal;
+}
+.character-sheet {
+    max-width: 1024px;
+    margin: 0 auto;
 }
