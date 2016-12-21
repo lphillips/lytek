@@ -1,19 +1,22 @@
+import { Ability } from 'shared/character/models';
 import CharmBrowserController from './CharmBrowserController';
+import { solarCharmResourceId } from 'assets/solar-charms/SolarCharmsAssets';
+
 import 'file?name=partials/charm-browser.html!components/charm-browser/charm-browser.html';
-import './SolarCharmsAssets';
+
 
 export
 default class SolarCharmBrowserController extends CharmBrowserController {
     /* @ngInject */
-    constructor($scope, $document, $mdSidenav, Charms, CharacterService) {
+    constructor($scope, $document, $mdSidenav, SolarCharms, CharacterService) {
         super($scope, $document, $mdSidenav, CharacterService);
-        this.CharmsService = Charms;
-        this.loadCharmTree('awareness');
+        this.CharmsService = SolarCharms;
+        this.loadCharmTree(Ability.ARCHERY);
     }
 
-    getResource(charmTreeName) {
+    getResource(ability) {
         return this.CharmsService.query({
-            ability: charmTreeName
+            ability: solarCharmResourceId(ability)
         });
     }
 }

@@ -4,6 +4,8 @@ import CharacterService from 'shared/character/CharacterService';
 import FileService from 'shared/file-io/FileService';
 
 import 'assets/martial-arts/martial-arts.json';
+import 'assets/solar-charms/SolarCharmsAssets';
+import { solarCharmPath } from 'assets/solar-charms/SolarCharmsAssets';
 
 /* Services */
 
@@ -14,6 +16,12 @@ default lytekServices;
 lytekServices.factory('Charms', ['$resource',
     function($resource) {
         return $resource('solar-charms/:ability.json', {}, {});
+    }
+]);
+
+lytekServices.factory('SolarCharms', ['$resource',
+    function($resource) {
+        return $resource(solarCharmPath + '/:ability.json', {}, {});
     }
 ]);
 

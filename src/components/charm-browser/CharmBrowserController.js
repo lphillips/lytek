@@ -1,5 +1,5 @@
 import {
-    ExaltedCharacter
+    ExaltedCharacter, Ability
 }
 from 'shared/character/models';
 import CharmShape from 'shared/charm-graph/charmshape';
@@ -18,6 +18,10 @@ default class CharmBrowserController {
 
         this.character = CharacterService.character;
         this.selectedCharm = null;
+        
+        // Create a list of Abilities to show for selecting Charm trees.
+        this.charmAbilities = Ability.enumValues.slice(0);
+        this.charmAbilities.splice(this.charmAbilities.findIndex((ability)=>ability === Ability.MARTIAL_ARTS), 1);
 
         this.network_options = {
             autoResize: true,
@@ -72,12 +76,12 @@ default class CharmBrowserController {
         return null;
     }
 
-    loadCharmTree(charmTreeName) {
+    loadCharmTree(charmAbility) {
         // Clear the previously loaded charms.
         this.charms = {};
 
         // Begin the load of the new charm trees.
-        let charmsResource = this.getResource(charmTreeName);
+        let charmsResource = this.getResource(charmAbility);
 
         // When the list of charm is received, build the graph info.
         charmsResource.$promise.then((result) => {
@@ -112,7 +116,7 @@ default class CharmBrowserController {
             this.charmTreeNetwork.setOptions(this.network_options);
             this.charmTreeNetwork.setData(charmData);
             this.charmTreeNetwork.redraw();
-        });
+        }).catch(e => console.log('reject: ' + e));
     }
 
     addCharm(charm) {

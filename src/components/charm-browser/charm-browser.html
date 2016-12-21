@@ -27,8 +27,8 @@
     <!-- Charm List -->
     <md-sidenav md-component-id="solar-charm-menu" class="md-sidenav-left">
         <md-list>
-            <md-list-item ng-repeat="abilityName in charmBrowserCtrl.character.AbilityEnum" ng-click="charmBrowserCtrl.loadCharmTree(abilityName)">
-                <span class="charm-tree-list-item">{{abilityName}}</span>
+            <md-list-item ng-repeat="charmAbility in charmBrowserCtrl.charmAbilities" ng-click="charmBrowserCtrl.loadCharmTree(charmAbility)">
+                <span class="charm-tree-list-item">{{charmAbility.localizeKey | translate}}</span>
             </md-list-item>
         </md-list>
     </md-sidenav>

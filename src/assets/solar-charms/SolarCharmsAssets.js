@@ -23,3 +23,9 @@ import 'file?name=solar-charms/stealth.json!assets/solar-charms/stealth.json';
 import 'file?name=solar-charms/survival.json!assets/solar-charms/survival.json';
 import 'file?name=solar-charms/thrown.json!assets/solar-charms/thrown.json';
 import 'file?name=solar-charms/war.json!assets/solar-charms/war.json';
+
+export const solarCharmPath = 'solar-charms';
+
+export function solarCharmResourceId(ability) {
+    return ability.name.toLowerCase();
+}
